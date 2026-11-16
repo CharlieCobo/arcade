@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import type { Board as BoardState, WinLine } from '../logic'
 import styles from '../InfiniteTicTacToe.module.css'
 
@@ -10,8 +11,10 @@ interface Props {
 }
 
 export function Board({ board, fadingIdx, winLine, disabled, onPlay }: Props) {
+  const { t } = useTranslation('infinite-tic-tac-toe')
+
   return (
-    <div className={styles.board} role="grid" aria-label="Tablero">
+    <div className={styles.board} role="grid" aria-label={t('board.label')}>
       {board.map((value, i) => {
         const classes = [
           styles.cell,
@@ -26,7 +29,9 @@ export function Board({ board, fadingIdx, winLine, disabled, onPlay }: Props) {
             className={classes}
             onClick={() => onPlay(i)}
             disabled={disabled || value !== null}
-            aria-label={`Casilla ${i + 1}${value ? `, ${value}` : ''}${i === fadingIdx ? ', desaparecerá' : ''}`}
+            aria-label={[t('board.cell', { n: i + 1 }), value, i === fadingIdx && t('board.willVanish')]
+              .filter(Boolean)
+              .join(', ')}
           >
             {value && (
               <span key={value} className={styles.piece}>

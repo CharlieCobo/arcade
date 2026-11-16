@@ -1,0 +1,21 @@
+{
+  "home": {
+    "title": "Arcade",
+    "subtitle": "Seu baú de minijogos",
+    "comingSoon": "Mais jogos em breve"
+  },
+  "game": {
+    "back": "Voltar ao baú",
+    "loading": "Carregando…",
+    "notFound": "Jogo não encontrado"
+  },
+  "pwa": {
+    "offlineReady": "Pronto para jogar offline.",
+    "updateAvailable": "Há uma nova versão disponível.",
+    "update": "Atualizar",
+    "close": "Fechar"
+  },
+  "language": {
+    "label": "Idioma"
+  }
+}

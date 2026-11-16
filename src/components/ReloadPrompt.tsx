@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 import styles from './ReloadPrompt.module.css'
 
 /** Avisa cuando la app ya funciona sin conexión o cuando hay una versión nueva. */
 export function ReloadPrompt() {
+  const { t } = useTranslation()
   const {
     offlineReady: [offlineReady, setOfflineReady],
     needRefresh: [needRefresh, setNeedRefresh],
@@ -13,8 +15,8 @@ export function ReloadPrompt() {
   // El aviso de "sin conexión" es informativo: se oculta solo para no tapar el juego.
   useEffect(() => {
     if (!offlineReady) return
-    const t = setTimeout(() => setOfflineReady(false), 3500)
-    return () => clearTimeout(t)
+    const timer = setTimeout(() => setOfflineReady(false), 3500)
+    return () => clearTimeout(timer)
   }, [offlineReady, setOfflineReady])
 
   if (!offlineReady && !needRefresh) return null
@@ -27,15 +29,15 @@ export function ReloadPrompt() {
   return (
     <div className={styles.toast} role="status">
       <span className={styles.msg}>
-        {needRefresh ? 'Hay una versión nueva disponible.' : 'Listo para jugar sin conexión.'}
+        {needRefresh ? t('pwa.updateAvailable') : t('pwa.offlineReady')}
       </span>
       {needRefresh && (
         <button className={styles.btn} onClick={() => updateServiceWorker(true)}>
-          Actualizar
+          {t('pwa.update')}
         </button>
       )}
       <button className={styles.ghost} onClick={close}>
-        Cerrar
+        {t('pwa.close')}
       </button>
     </div>
   )
