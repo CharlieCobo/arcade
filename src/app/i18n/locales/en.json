@@ -2,7 +2,8 @@
   "home": {
     "title": "Arcade",
     "subtitle": "Your mini-game chest",
-    "comingSoon": "More games coming soon"
+    "comingSoon": "More games coming soon",
+    "best": "Best: {{score}}"
   },
   "game": {
     "back": "Back to the chest",

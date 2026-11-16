@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { GameCard } from '../components/GameCard'
 import { LanguageSwitcher } from '../components/LanguageSwitcher'
 import { Shell } from '../components/Shell'
-import { games } from '../games/registry'
+import { games } from '@games'
 import styles from './Home.module.css'
 
 export function Home() {

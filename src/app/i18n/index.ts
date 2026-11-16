@@ -1,7 +1,7 @@
 import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
-import { FALLBACK_LANGUAGE, SUPPORTED_LANGUAGES } from './languages'
+import { FALLBACK_LANGUAGE, SUPPORTED_LANGUAGES } from '@core/i18n/languages'
 import { defaultNS, resources } from './resources'
 
 // Las traducciones van en el bundle: así la PWA funciona sin conexión en cualquier idioma.

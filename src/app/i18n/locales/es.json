@@ -2,7 +2,8 @@
   "home": {
     "title": "Arcade",
     "subtitle": "Tu baúl de minijuegos",
-    "comingSoon": "Más juegos próximamente"
+    "comingSoon": "Más juegos próximamente",
+    "best": "Récord: {{score}}"
   },
   "game": {
     "back": "Volver al baúl",

@@ -3,8 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router'
 import { LanguageSwitcher } from '../components/LanguageSwitcher'
 import { Shell } from '../components/Shell'
-import { findGame } from '../games/registry'
-import type { GameDefinition } from '../games/types'
+import { findGame, type Game } from '@games'
 import { NotFound } from './NotFound'
 import styles from './GamePage.module.css'
 
@@ -14,7 +13,7 @@ export function GamePage() {
   return game ? <GameView game={game} /> : <NotFound />
 }
 
-function GameView({ game: { id, Component } }: { game: GameDefinition }) {
+function GameView({ game: { id, Component } }: { game: Game }) {
   const { t } = useTranslation(['common', id])
 
   return (

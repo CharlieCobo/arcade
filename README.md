@@ -21,44 +21,57 @@ npm run preview    # sirve el build (para probar la PWA)
 
 Para probar en el móvil en la misma red: `npm run dev -- --host`.
 
-## Estructura
+## Arquitectura
 
 ```
 src/
+  app/          # shell de la app: rutas, portada, i18n, aviso de actualización
+  core/         # lo compartido: tipos de juego, store de puntos, utilidades, estilos
+    game.ts       # contrato GameManifest + defineGame()
+    scores/       # store de puntos (zustand + persist)
+    i18n/  lib/  styles/
   games/
-    registry.ts                 # listado del baúl
-    types.ts
-    infinite-tic-tac-toe/
-      logic.ts                  # lógica pura, sin React
-      logic.test.ts
-      InfiniteTicTacToe.tsx     # pantalla del juego
-      components/               # Board, PlayerCard
-      locales/                  # es, en, pt
-      Icon.tsx
-  pages/                        # Home (baúl), GamePage, NotFound
-  components/                   # Shell, ReloadPrompt (actualizaciones PWA)
-  i18n/                         # configuración i18next, idiomas y textos comunes
-  lib/                          # haptics, useLocalStorage
-  styles/global.css             # tokens de diseño
+    index.ts      # registro del baúl
+    <id>/         # un módulo por juego
+      index.ts      # manifiesto: defineGame({ id, accent, Icon, Component, locales })
+      meta.ts       # GAME_ID
+      logic.ts      # lógica pura + logic.test.ts
+      scores.ts     # puntos del juego sobre el store compartido
+      components/  locales/  *.module.css
 ```
+
+**Reglas de dependencias** (las comprueba ESLint):
+
+- `app` puede usar `core` y `games`.
+- Un juego solo puede importar de `@core`: nunca de otro juego ni de `@app`, ni salir de su carpeta con rutas relativas.
+- `core` no depende de nadie.
+
+### Sistema de puntos
+
+Un único store de [zustand](https://zustand.docs.pmnd.rs/) guarda los puntos de todos los juegos, persistido en `localStorage` con versión y migraciones (`arcade:scores`). Cada juego tiene:
+
+- `best`: récord por modo de juego.
+- `counters`: contadores libres (p. ej. victorias por modo y jugador).
+- `history`: últimas 20 partidas.
+
+Los juegos usan `useGameScores(GAME_ID)`, cuyas acciones ya llevan el id del juego, y la portada muestra el récord con `useBestScore(id)`. El almacenamiento es un adaptador (`core/scores/storage.ts`): pasar a IndexedDB es cambiar ese archivo.
 
 ## Idiomas
 
 Disponible en español, inglés y portugués con [react-i18next](https://react.i18next.com/). El idioma se detecta del navegador (`pt-BR` → `pt`), se puede cambiar con el selector ES/EN/PT y se guarda en `localStorage`. Si el idioma del navegador no está soportado, se usa inglés.
 
-- Textos comunes: `src/i18n/locales/{es,en,pt}.json` (namespace `common`).
-- Textos de cada juego: `src/games/<id>/locales/{es,en,pt}.json` (namespace `<id>`).
+- Textos comunes: `src/app/i18n/locales/{es,en,pt}.json` (namespace `common`).
+- Textos de cada juego: `src/games/<id>/locales/{es,en,pt}.json` (namespace `<id>`, registrado automáticamente).
 - Las claves están tipadas: una clave que no existe da error al compilar.
 - Un test comprueba que todos los idiomas tienen las mismas claves que `es`.
 
-Para añadir un idioma: crea sus JSON, regístralos en `src/i18n/resources.ts` y añádelo a `src/i18n/languages.ts`.
+Para añadir un idioma: añádelo a `src/core/i18n/languages.ts` y crea sus JSON. TypeScript te avisará de los que falten.
 
 ## Añadir un juego
 
-1. Crea `src/games/<id>/` con un componente por defecto y, si tiene reglas, su lógica pura con tests.
-2. Añade un icono (`Icon.tsx`) y sus traducciones en `locales/` con `meta.title`, `meta.description` y `meta.tags`.
-3. Registra sus locales en `src/i18n/resources.ts` con el namespace `<id>`.
-4. Registra el juego en `src/games/registry.ts`. Aparecerá en el baúl y en `#/juegos/<id>`.
+1. Crea `src/games/<id>/` con su `meta.ts` (`GAME_ID`), su lógica pura con tests, sus componentes, estilos y `locales/{es,en,pt}.json` (con `meta.title`, `meta.description` y `meta.tags`).
+2. Exporta el manifiesto desde `index.ts` con `defineGame({...})`.
+3. Añádelo a la lista de `src/games/index.ts`. La ruta `#/juegos/<id>`, la tarjeta del baúl y el namespace de traducciones se configuran solos.
 
 ## Despliegue
 

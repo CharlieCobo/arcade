@@ -25,7 +25,21 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "@core/*": [
+        "./src/core/*"
+      ],
+      "@games": [
+        "./src/games/index.ts"
+      ],
+      "@games/*": [
+        "./src/games/*"
+      ]
+    }
   },
   "include": [
     "src"

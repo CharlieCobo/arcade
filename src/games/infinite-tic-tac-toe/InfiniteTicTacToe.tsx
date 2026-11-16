@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
-import { vibrate } from '../../lib/haptics'
-import { useLocalStorage } from '../../lib/useLocalStorage'
+import { vibrate } from '@core/lib/haptics'
+import { useLocalStorage } from '@core/lib/useLocalStorage'
 import { Board } from './components/Board'
 import { PlayerCard } from './components/PlayerCard'
+import { useTicTacToeScores, type Mode } from './scores'
 import {
   MAX_PIECES,
   applyMove,
@@ -15,7 +16,6 @@ import {
 } from './logic'
 import styles from './InfiniteTicTacToe.module.css'
 
-type Mode = 'pvp' | 'cpu'
 const PLAYERS: Player[] = ['X', 'O']
 const CPU_DELAY_MS = 450
 
@@ -24,7 +24,7 @@ const NS = 'infinite-tic-tac-toe'
 export default function InfiniteTicTacToe() {
   const { t } = useTranslation(NS)
   const [mode, setMode] = useLocalStorage<Mode>('ittt:mode', 'pvp')
-  const [score, setScore] = useLocalStorage<Record<Player, number>>('ittt:score', { X: 0, O: 0 })
+  const { wins, addWin, resetWins } = useTicTacToeScores(mode)
   const [starter, setStarter] = useState<Player>('X')
   const [game, setGame] = useState(() => initialState('X'))
 
@@ -40,8 +40,7 @@ export default function InfiniteTicTacToe() {
     if (!next) return
     setGame(next)
     if (next.winner) {
-      const w = next.winner
-      setScore((s) => ({ ...s, [w]: s[w] + 1 }))
+      addWin(next.winner)
       vibrate([30, 40, 60])
     } else {
       vibrate(12)
@@ -65,16 +64,22 @@ export default function InfiniteTicTacToe() {
     setGame(initialState(s))
   }
 
-  const resetAll = () => {
+  const restart = () => {
     setStarter('X')
     setGame(initialState('X'))
-    setScore({ X: 0, O: 0 })
   }
 
+  /** Resetea solo el marcador del modo actual. */
+  const resetAll = () => {
+    restart()
+    resetWins()
+  }
+
+  /** Cada modo tiene su propio marcador: cambiar de modo ya no lo borra. */
   const switchMode = (m: Mode) => {
     if (m === mode) return
     setMode(m)
-    resetAll()
+    restart()
   }
 
   return (
@@ -94,7 +99,7 @@ export default function InfiniteTicTacToe() {
             key={p}
             player={p}
             name={names[p]}
-            points={score[p]}
+            points={wins[p]}
             pieces={game.queues[p].length}
             maxPieces={MAX_PIECES}
             active={game.turn === p && !game.winner}
