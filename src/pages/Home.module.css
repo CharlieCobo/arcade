@@ -1,0 +1,81 @@
+.header h1 {
+  font-size: 30px;
+  margin: 0;
+  letter-spacing: -1px;
+}
+.header p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.card {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.card:hover,
+.card:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+.card:active {
+  transform: scale(0.98);
+}
+.thumb {
+  flex: none;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-md);
+  background: var(--cell);
+  display: grid;
+  place-items: center;
+}
+.body {
+  min-width: 0;
+}
+.title {
+  font-weight: 700;
+  font-size: 17px;
+}
+.desc {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+  margin-top: 3px;
+}
+.tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--cell);
+  color: var(--muted);
+}
+.soon {
+  border: 2px dashed var(--cell);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}

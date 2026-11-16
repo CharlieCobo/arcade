@@ -1,0 +1,218 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Selector de modo */
+.modes {
+  display: flex;
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 4px;
+}
+.modes button {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+.modes button[aria-pressed='true'] {
+  background: var(--cell);
+  color: var(--text);
+}
+
+/* Tarjetas de jugador */
+.score {
+  display: flex;
+  gap: 10px;
+}
+.pcard {
+  flex: 1;
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 12px 14px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.pcard.active {
+  transform: translateY(-2px);
+}
+.pcard.X.active {
+  border-color: var(--x);
+}
+.pcard.O.active {
+  border-color: var(--o);
+}
+.pcardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.mark,
+.pts {
+  font-size: 22px;
+  font-weight: 700;
+}
+.X .mark {
+  color: var(--x);
+}
+.O .mark {
+  color: var(--o);
+}
+.name {
+  color: var(--muted);
+  font-size: 12px;
+}
+.dots {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cell);
+}
+.X .dot.filled {
+  background: var(--x);
+}
+.O .dot.filled {
+  background: var(--o);
+}
+.dot.old {
+  opacity: 0.35;
+}
+
+/* Estado */
+.status {
+  text-align: center;
+  font-weight: 600;
+  min-height: 24px;
+}
+.textX {
+  color: var(--x);
+}
+.textO {
+  color: var(--o);
+}
+
+/* Tablero: tamaño estático, el contenido nunca altera las casillas */
+.board {
+  display: grid;
+  width: 100%;
+  max-width: 384px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.cell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--cell);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s;
+  touch-action: manipulation;
+}
+.cell:active:not(:disabled) {
+  background: var(--cell-active);
+}
+.cell:disabled {
+  cursor: default;
+}
+.cell.X {
+  color: var(--x);
+}
+.cell.O {
+  color: var(--o);
+}
+.piece {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: pop 0.18s ease-out;
+}
+.fading .piece {
+  opacity: 0.3;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+.win {
+  background: var(--cell-win);
+}
+.win .piece {
+  animation: bounce 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.12;
+  }
+}
+@keyframes bounce {
+  to {
+    transform: scale(1.12);
+  }
+}
+
+/* Acciones */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+.actions button {
+  flex: 1;
+  border: 0;
+  border-radius: var(--radius-md);
+  padding: 14px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+.primary {
+  background: var(--text);
+  color: var(--bg) !important;
+}
+.ghost {
+  background: var(--panel);
+}
+
+.rules {
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.5;
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin: 0;
+}
+.rules strong {
+  color: var(--text);
+}

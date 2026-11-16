@@ -1,0 +1,8 @@
+.shell {
+  width: 100%;
+  max-width: 420px;
+  padding: calc(env(safe-area-inset-top) + 20px) 18px calc(env(safe-area-inset-bottom) + 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}

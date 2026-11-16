@@ -1,0 +1,41 @@
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom) + 16px);
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 388px;
+  background: var(--panel);
+  border: 1px solid var(--cell);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.4);
+  animation: rise 0.25s ease-out;
+}
+.msg {
+  flex: 1;
+}
+.btn {
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--text);
+  color: var(--bg);
+}
+.ghost {
+  composes: btn;
+  background: transparent;
+  color: var(--muted);
+}
+@keyframes rise {
+  from {
+    transform: translate(-50%, 20px);
+    opacity: 0;
+  }
+}

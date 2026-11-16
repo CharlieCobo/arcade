@@ -1,0 +1,29 @@
+.top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.back {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  font-size: 20px;
+  flex: none;
+}
+.back:active {
+  background: var(--cell);
+}
+.title {
+  font-size: 20px;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+.loading {
+  color: var(--muted);
+  text-align: center;
+  padding: 40px 0;
+}
