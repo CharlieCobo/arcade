@@ -1,0 +1,21 @@
+{
+  "home": {
+    "title": "Arcade",
+    "subtitle": "Your mini-game chest",
+    "comingSoon": "More games coming soon"
+  },
+  "game": {
+    "back": "Back to the chest",
+    "loading": "Loading…",
+    "notFound": "Game not found"
+  },
+  "pwa": {
+    "offlineReady": "Ready to play offline.",
+    "updateAvailable": "A new version is available.",
+    "update": "Update",
+    "close": "Close"
+  },
+  "language": {
+    "label": "Language"
+  }
+}

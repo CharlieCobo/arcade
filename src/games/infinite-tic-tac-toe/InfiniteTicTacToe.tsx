@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
 import { vibrate } from '../../lib/haptics'
 import { useLocalStorage } from '../../lib/useLocalStorage'
 import { Board } from './components/Board'
@@ -18,7 +19,10 @@ type Mode = 'pvp' | 'cpu'
 const PLAYERS: Player[] = ['X', 'O']
 const CPU_DELAY_MS = 450
 
+const NS = 'infinite-tic-tac-toe'
+
 export default function InfiniteTicTacToe() {
+  const { t } = useTranslation(NS)
   const [mode, setMode] = useLocalStorage<Mode>('ittt:mode', 'pvp')
   const [score, setScore] = useLocalStorage<Record<Player, number>>('ittt:score', { X: 0, O: 0 })
   const [starter, setStarter] = useState<Player>('X')
@@ -26,7 +30,10 @@ export default function InfiniteTicTacToe() {
 
   const cpuTurn = mode === 'cpu' && game.turn === 'O' && !game.winner
   const fadingIdx = nextToVanish(game)
-  const names: Record<Player, string> = { X: 'Jugador 1', O: mode === 'cpu' ? 'CPU' : 'Jugador 2' }
+  const names: Record<Player, string> = {
+    X: t('players.p1'),
+    O: mode === 'cpu' ? t('players.cpu') : t('players.p2'),
+  }
 
   const play = (idx: number) => {
     const next = applyMove(game, idx)
@@ -43,11 +50,11 @@ export default function InfiniteTicTacToe() {
 
   useEffect(() => {
     if (!cpuTurn) return
-    const t = setTimeout(() => {
+    const timer = setTimeout(() => {
       const idx = cpuMove(game)
       if (idx !== null) play(idx)
     }, CPU_DELAY_MS)
-    return () => clearTimeout(t)
+    return () => clearTimeout(timer)
     // play depende de game, que ya está en las dependencias
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [game, cpuTurn])
@@ -72,12 +79,12 @@ export default function InfiniteTicTacToe() {
 
   return (
     <div className={styles.game}>
-      <div className={styles.modes} role="group" aria-label="Modo de juego">
+      <div className={styles.modes} role="group" aria-label={t('modes.label')}>
         <button aria-pressed={mode === 'pvp'} onClick={() => switchMode('pvp')}>
-          2 jugadores
+          {t('modes.pvp')}
         </button>
         <button aria-pressed={mode === 'cpu'} onClick={() => switchMode('cpu')}>
-          Contra CPU
+          {t('modes.cpu')}
         </button>
       </div>
 
@@ -96,16 +103,15 @@ export default function InfiniteTicTacToe() {
       </div>
 
       <div className={styles.status} aria-live="polite">
-        {game.winner ? (
-          <span>
-            ¡Gana <span className={styles[`text${game.winner}`]}>{names[game.winner]}</span>! 🎉
-          </span>
-        ) : cpuTurn ? (
-          <span>La CPU está pensando…</span>
+        {cpuTurn ? (
+          t('status.cpuThinking')
         ) : (
-          <span>
-            Turno de <span className={styles[`text${game.turn}`]}>{names[game.turn]}</span>
-          </span>
+          <Trans
+            t={t}
+            i18nKey={game.winner ? 'status.win' : 'status.turn'}
+            values={{ name: names[game.winner ?? game.turn] }}
+            components={{ player: <span className={styles[`text${game.winner ?? game.turn}`]} /> }}
+          />
         )}
       </div>
 
@@ -119,17 +125,15 @@ export default function InfiniteTicTacToe() {
 
       <div className={styles.actions}>
         <button className={styles.primary} onClick={newRound}>
-          Nueva ronda
+          {t('actions.newRound')}
         </button>
         <button className={styles.ghost} onClick={resetAll}>
-          Reiniciar marcador
+          {t('actions.resetScore')}
         </button>
       </div>
 
       <p className={styles.rules}>
-        <strong>Reglas:</strong> cada jugador solo puede tener {MAX_PIECES} fichas en el tablero. Al
-        colocar la cuarta, desaparece tu ficha más antigua (la que parpadea). Gana quien haga tres en
-        raya.
+        <Trans t={t} i18nKey="rules" values={{ max: MAX_PIECES }} components={{ strong: <strong /> }} />
       </p>
     </div>
   )

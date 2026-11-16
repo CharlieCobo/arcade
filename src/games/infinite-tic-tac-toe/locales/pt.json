@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "title": "Jogo da velha infinito",
+    "description": "Só 3 peças por jogador: ao colocar a quarta, a mais antiga desaparece.",
+    "tags": ["2 jogadores", "vs CPU"]
+  },
+  "modes": {
+    "label": "Modo de jogo",
+    "pvp": "2 jogadores",
+    "cpu": "Contra a CPU"
+  },
+  "players": {
+    "p1": "Jogador 1",
+    "p2": "Jogador 2",
+    "cpu": "CPU",
+    "pieces": "{{count}} de {{max}} peças"
+  },
+  "status": {
+    "turn": "Vez de <player>{{name}}</player>",
+    "win": "<player>{{name}}</player> venceu! 🎉",
+    "cpuThinking": "A CPU está pensando…"
+  },
+  "board": {
+    "label": "Tabuleiro",
+    "cell": "Casa {{n}}",
+    "willVanish": "vai desaparecer"
+  },
+  "actions": {
+    "newRound": "Nova rodada",
+    "resetScore": "Zerar placar"
+  },
+  "rules": "<strong>Regras:</strong> cada jogador só pode ter {{max}} peças no tabuleiro. Ao colocar a quarta, sua peça mais antiga desaparece (a que pisca). Vence quem fizer três em linha."
+}

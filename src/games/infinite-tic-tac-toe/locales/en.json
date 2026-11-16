@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "title": "Infinite Tic-Tac-Toe",
+    "description": "Only 3 pieces per player: place a fourth and your oldest one disappears.",
+    "tags": ["2 players", "vs CPU"]
+  },
+  "modes": {
+    "label": "Game mode",
+    "pvp": "2 players",
+    "cpu": "vs CPU"
+  },
+  "players": {
+    "p1": "Player 1",
+    "p2": "Player 2",
+    "cpu": "CPU",
+    "pieces": "{{count}} of {{max}} pieces"
+  },
+  "status": {
+    "turn": "<player>{{name}}</player>'s turn",
+    "win": "<player>{{name}}</player> wins! 🎉",
+    "cpuThinking": "The CPU is thinking…"
+  },
+  "board": {
+    "label": "Board",
+    "cell": "Cell {{n}}",
+    "willVanish": "will disappear"
+  },
+  "actions": {
+    "newRound": "New round",
+    "resetScore": "Reset score"
+  },
+  "rules": "<strong>Rules:</strong> each player can only have {{max}} pieces on the board. When you place a fourth, your oldest piece disappears (the blinking one). Get three in a row to win."
+}
