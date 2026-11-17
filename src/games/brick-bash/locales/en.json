@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "title": "Brick Bash",
+    "description": "Smash every brick with the ball. Power-ups, combos and 8 levels.",
+    "tags": [
+      "1 player",
+      "Power-ups"
+    ]
+  },
+  "difficulty": {
+    "label": "Difficulty",
+    "easy": "Easy",
+    "normal": "Normal",
+    "hard": "Hard",
+    "easyHint": "5 lives, wide paddle and more power-ups.",
+    "normalHint": "3 lives. The classic balance.",
+    "hardHint": "2 lives, fast ball, narrow paddle and fewer helpers."
+  },
+  "hud": {
+    "score": "Score",
+    "level": "Level",
+    "lives": "Lives",
+    "best": "Best"
+  },
+  "powers": {
+    "expand": "Expand",
+    "laser": "Laser",
+    "catch": "Magnet",
+    "slow": "Slow",
+    "multi": "Multiball",
+    "life": "Extra life"
+  },
+  "levels": {
+    "warmup": "Warm-up",
+    "pyramid": "Pyramid",
+    "checkers": "Checkers",
+    "fortress": "Fortress",
+    "heart": "Heart",
+    "invader": "Invader",
+    "wall": "The wall",
+    "maze": "Maze"
+  },
+  "screens": {
+    "play": "Play",
+    "paused": "Paused",
+    "resume": "Resume",
+    "endGame": "End game",
+    "over": "Game over",
+    "newRecord": "New record!",
+    "points_one": "{{count}} point",
+    "points_other": "{{count}} points",
+    "reached": "You reached level {{level}}",
+    "playAgain": "Play again",
+    "changeDifficulty": "Change difficulty",
+    "cleared": "Level cleared!",
+    "bonus": "+{{points}} bonus",
+    "next": "Level {{level}} · {{name}}",
+    "continue": "Continue",
+    "launch": "Tap to launch",
+    "powersTitle": "Power-ups"
+  },
+  "control": {
+    "label": "Control area",
+    "hint": "Swipe to move · tap to launch or fire",
+    "pause": "Pause"
+  },
+  "board": {
+    "label": "Brick Bash board"
+  },
+  "combo": "Combo ×{{n}}"
+}

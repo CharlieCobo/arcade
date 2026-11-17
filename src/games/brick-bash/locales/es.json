@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "title": "Brick Bash",
+    "description": "Rompe todos los ladrillos con la bola. Power-ups, combos y 8 niveles.",
+    "tags": [
+      "1 jugador",
+      "Power-ups"
+    ]
+  },
+  "difficulty": {
+    "label": "Dificultad",
+    "easy": "Fácil",
+    "normal": "Normal",
+    "hard": "Difícil",
+    "easyHint": "5 vidas, pala ancha y más power-ups.",
+    "normalHint": "3 vidas. El equilibrio clásico.",
+    "hardHint": "2 vidas, bola rápida, pala estrecha y menos ayudas."
+  },
+  "hud": {
+    "score": "Puntos",
+    "level": "Nivel",
+    "lives": "Vidas",
+    "best": "Récord"
+  },
+  "powers": {
+    "expand": "Ensanchar",
+    "laser": "Láser",
+    "catch": "Imán",
+    "slow": "Lento",
+    "multi": "Multibola",
+    "life": "Vida extra"
+  },
+  "levels": {
+    "warmup": "Calentamiento",
+    "pyramid": "Pirámide",
+    "checkers": "Ajedrez",
+    "fortress": "Fortaleza",
+    "heart": "Corazón",
+    "invader": "Invasor",
+    "wall": "Muro",
+    "maze": "Laberinto"
+  },
+  "screens": {
+    "play": "Jugar",
+    "paused": "Pausa",
+    "resume": "Continuar",
+    "endGame": "Terminar partida",
+    "over": "Fin de la partida",
+    "newRecord": "¡Nuevo récord!",
+    "points_one": "{{count}} punto",
+    "points_other": "{{count}} puntos",
+    "reached": "Llegaste al nivel {{level}}",
+    "playAgain": "Otra vez",
+    "changeDifficulty": "Cambiar dificultad",
+    "cleared": "¡Nivel superado!",
+    "bonus": "+{{points}} de bonus",
+    "next": "Nivel {{level}} · {{name}}",
+    "continue": "Continuar",
+    "launch": "Toca para lanzar",
+    "powersTitle": "Power-ups"
+  },
+  "control": {
+    "label": "Zona de control",
+    "hint": "Desliza para mover · toca para lanzar o disparar",
+    "pause": "Pausar"
+  },
+  "board": {
+    "label": "Tablero de Brick Bash"
+  },
+  "combo": "Combo ×{{n}}"
+}
