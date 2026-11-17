@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Ahorcado",
+    "description": "Adivina la palabra letra a letra antes de que se complete el dibujo.",
+    "tags": [
+      "1 jugador",
+      "vs amigo"
+    ]
+  },
+  "modes": {
+    "label": "Modo de juego",
+    "solo": "Solo",
+    "friend": "Contra un amigo",
+    "soloHint": "Adivina palabras al azar de la categoría que elijas.",
+    "friendHint": "Uno escribe una palabra secreta y el otro la adivina en el mismo móvil."
+  },
+  "difficulty": {
+    "label": "Dificultad",
+    "easy": "Fácil",
+    "normal": "Normal",
+    "hard": "Difícil",
+    "tries_one": "{{count}} fallo permitido",
+    "tries_other": "{{count}} fallos permitidos"
+  },
+  "categories": {
+    "label": "Categoría",
+    "any": "Cualquiera",
+    "animals": "Animales",
+    "food": "Comida",
+    "countries": "Países",
+    "objects": "Objetos"
+  },
+  "secret": {
+    "title": "Escribe la palabra secreta",
+    "placeholder": "Palabra o frase corta",
+    "clue": "Pista (opcional)",
+    "cluePlaceholder": "Por ejemplo: es una fruta",
+    "show": "Mostrar palabra",
+    "hide": "Ocultar palabra",
+    "continue": "Continuar",
+    "back": "Volver",
+    "tooShort": "Escribe al menos 2 letras.",
+    "tooLong": "Como máximo 24 caracteres.",
+    "invalidChars": "Solo letras, espacios y guiones."
+  },
+  "handoff": {
+    "title": "Pásale el móvil a tu amigo",
+    "text": "Quien escribió la palabra, ¡que no mire! 🙈",
+    "ready": "Estoy listo"
+  },
+  "hud": {
+    "lives": "Intentos",
+    "hint": "Pista",
+    "hintCost": "Revela una letra a cambio de un intento",
+    "category": "Categoría: {{name}}",
+    "clue": "Pista: {{clue}}"
+  },
+  "keyboard": {
+    "label": "Teclado",
+    "letter": "Letra {{letter}}",
+    "hit": "acertada",
+    "miss": "fallada"
+  },
+  "result": {
+    "won": "¡Acertaste!",
+    "lost": "¡Ahorcado!",
+    "word": "La palabra era",
+    "streak": "Racha: {{n}}",
+    "newRecord": "¡Nueva mejor racha!",
+    "record": "🏆 Mejor racha: {{n}}",
+    "next": "Otra palabra",
+    "menu": "Menú"
+  },
+  "play": "Jugar",
+  "drawing": "Dibujo: {{n}} de 10 trazos"
+}

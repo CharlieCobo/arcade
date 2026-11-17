@@ -3,6 +3,7 @@ import snake from './snake'
 import blocks from './blocks'
 import brickBash from './brick-bash'
 import pingPong from './ping-pong'
+import hangman from './hangman'
 
 /**
  * Baúl de juegos. Para añadir uno nuevo:
@@ -11,7 +12,7 @@ import pingPong from './ping-pong'
  *
  * Regla: un juego solo puede importar de @core, nunca de otro juego ni de @app.
  */
-export const games = [infiniteTicTacToe, snake, blocks, brickBash, pingPong] as const
+export const games = [infiniteTicTacToe, snake, blocks, brickBash, pingPong, hangman] as const
 
 export type Game = (typeof games)[number]
 export type GameId = Game['id']

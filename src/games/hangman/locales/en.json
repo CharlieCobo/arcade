@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Hangman",
+    "description": "Guess the word letter by letter before the drawing is complete.",
+    "tags": [
+      "1 player",
+      "vs friend"
+    ]
+  },
+  "modes": {
+    "label": "Game mode",
+    "solo": "Solo",
+    "friend": "vs a friend",
+    "soloHint": "Guess random words from the category you pick.",
+    "friendHint": "One player writes a secret word and the other guesses it on the same phone."
+  },
+  "difficulty": {
+    "label": "Difficulty",
+    "easy": "Easy",
+    "normal": "Normal",
+    "hard": "Hard",
+    "tries_one": "{{count}} mistake allowed",
+    "tries_other": "{{count}} mistakes allowed"
+  },
+  "categories": {
+    "label": "Category",
+    "any": "Any",
+    "animals": "Animals",
+    "food": "Food",
+    "countries": "Countries",
+    "objects": "Objects"
+  },
+  "secret": {
+    "title": "Write the secret word",
+    "placeholder": "A word or short phrase",
+    "clue": "Clue (optional)",
+    "cluePlaceholder": "For example: it's a fruit",
+    "show": "Show word",
+    "hide": "Hide word",
+    "continue": "Continue",
+    "back": "Back",
+    "tooShort": "Write at least 2 letters.",
+    "tooLong": "24 characters at most.",
+    "invalidChars": "Only letters, spaces and hyphens."
+  },
+  "handoff": {
+    "title": "Pass the phone to your friend",
+    "text": "Whoever wrote the word: no peeking! 🙈",
+    "ready": "I'm ready"
+  },
+  "hud": {
+    "lives": "Tries",
+    "hint": "Hint",
+    "hintCost": "Reveal a letter for one try",
+    "category": "Category: {{name}}",
+    "clue": "Clue: {{clue}}"
+  },
+  "keyboard": {
+    "label": "Keyboard",
+    "letter": "Letter {{letter}}",
+    "hit": "correct",
+    "miss": "wrong"
+  },
+  "result": {
+    "won": "You got it!",
+    "lost": "Hanged!",
+    "word": "The word was",
+    "streak": "Streak: {{n}}",
+    "newRecord": "New best streak!",
+    "record": "🏆 Best streak: {{n}}",
+    "next": "Next word",
+    "menu": "Menu"
+  },
+  "play": "Play",
+  "drawing": "Drawing: {{n}} of 10 strokes"
+}
