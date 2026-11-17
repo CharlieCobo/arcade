@@ -1,6 +1,6 @@
 /**
  * Lógica pura del juego de bloques (estilo "guideline" moderno):
- * tablero 10×20, rotación SRS con wall kicks, generador 7-bag,
+ * tablero 9×18, rotación SRS con wall kicks, generador 7-bag,
  * lock delay, puntuación por líneas × nivel y subida de nivel cada 10 líneas.
  *
  * Sin React ni canvas. La aleatoriedad (`rng`) se inyecta para testear.
@@ -47,8 +47,8 @@ export interface BlocksState {
   readonly pieces: number
 }
 
-export const COLS = 10
-export const ROWS = 20
+export const COLS = 9
+export const ROWS = 18
 export const HIDDEN_ROWS = 2
 export const TOTAL_ROWS = ROWS + HIDDEN_ROWS
 export const PREVIEW_COUNT = 3
@@ -60,15 +60,15 @@ export const MAX_LOCK_RESETS = 15
 
 export const PIECES: readonly PieceType[] = ['I', 'O', 'T', 'S', 'Z', 'J', 'L']
 
-/** Colores clásicos de cada pieza, ajustados para el fondo oscuro de la app. */
+/** Paleta propia de la app (rosa, cian, lima, violeta, oro, coral y menta). */
 export const PIECE_COLORS: Record<PieceType, string> = {
-  I: '#3fd9f5', // cian
-  O: '#f7d038', // amarillo
-  T: '#a35cf0', // morado
-  S: '#5ad65a', // verde
-  Z: '#f0505a', // rojo
-  J: '#3b6ff0', // azul
-  L: '#f59a3a', // naranja
+  I: '#ff5d8f', // rosa
+  O: '#4cc9f0', // cian
+  T: '#b8e04a', // lima
+  S: '#a35cf0', // violeta
+  Z: '#f7b538', // oro
+  J: '#ff8a5b', // coral
+  L: '#5ee6b8', // menta
 }
 
 /** Estado 0 (aparición) de cada pieza dentro de su caja: n = tamaño de la caja. */

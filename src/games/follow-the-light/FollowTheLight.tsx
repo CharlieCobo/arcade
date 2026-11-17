@@ -123,7 +123,7 @@ export default function FollowTheLight() {
           <button
             key={pad}
             type="button"
-            className={`${styles.pad} ${styles[`pad${pad}`]} ${shownLit === pad ? styles.lit : ''}`}
+            className={`${styles.pad} ${shownLit === pad ? styles.lit : ''}`}
             style={{ '--c': PAD_COLORS[pad] } as CSSProperties}
             aria-label={t('pads.label', { color: t(`pads.${PAD_KEYS[pad]}`) })}
             disabled={!myTurn}

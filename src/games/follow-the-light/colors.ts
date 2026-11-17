@@ -1,10 +1,10 @@
 import type { Pad } from './logic'
 
-/** Colores clásicos (verde, rojo, amarillo, azul) ajustados a la paleta de la app. */
+/** Paleta propia de la app: rosa, cian, lima y violeta. */
 export const PAD_COLORS: Record<Pad, string> = {
-  0: '#5ad65a',
-  1: '#f0505a',
-  2: '#f7d038',
-  3: '#3b6ff0',
+  0: '#ff5d8f',
+  1: '#4cc9f0',
+  2: '#b8e04a',
+  3: '#a35cf0',
 }
-export const PAD_KEYS = ['green', 'red', 'yellow', 'blue'] as const
+export const PAD_KEYS = ['pink', 'cyan', 'lime', 'violet'] as const

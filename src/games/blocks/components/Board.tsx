@@ -23,17 +23,16 @@ interface Props {
   children?: ReactNode
 }
 
-/** Bloque con aspecto clásico: color de la pieza y un brillo arriba. */
+/** Bloque tipo "caramelo": muy redondeado, con un punto de luz en la esquina. */
 function drawBlock(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, color: string, alpha = 1) {
-  const r = size * 0.18
   ctx.globalAlpha = alpha
   ctx.fillStyle = color
   ctx.beginPath()
-  ctx.roundRect(x, y, size, size, r)
+  ctx.roundRect(x, y, size, size, size * 0.38)
   ctx.fill()
-  ctx.fillStyle = 'rgb(255 255 255 / 0.22)'
+  ctx.fillStyle = 'rgb(255 255 255 / 0.35)'
   ctx.beginPath()
-  ctx.roundRect(x + size * 0.12, y + size * 0.1, size * 0.76, size * 0.18, r / 2)
+  ctx.arc(x + size * 0.3, y + size * 0.3, size * 0.1, 0, Math.PI * 2)
   ctx.fill()
   ctx.globalAlpha = 1
 }
@@ -46,12 +45,12 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, state: Blocks
 
   ctx.clearRect(0, 0, w, h)
 
-  // Píxeles apagados, como en el Snake
+  // Rejilla de puntos: un punto pequeño en el centro de cada casilla
   ctx.fillStyle = pixel
   for (let y = 0; y < ROWS; y++) {
     for (let x = 0; x < COLS; x++) {
       ctx.beginPath()
-      ctx.roundRect(at(x), at(y), size, size, size * 0.18)
+      ctx.arc(at(x) + size / 2, at(y) + size / 2, size * 0.14, 0, Math.PI * 2)
       ctx.fill()
     }
   }
@@ -67,18 +66,32 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, state: Blocks
 
   if (phase === 'ready' || over || !state.active) return
 
-  // Sombra: dónde caerá la pieza
+  // Guía de caída: un haz de luz en cada columna, desde la pieza hasta donde se apoyará
   const color = PIECE_COLORS[state.active.type]
   const ghost = ghostOf(state)
   if (ghost) {
-    ctx.strokeStyle = color
-    ctx.globalAlpha = 0.45
-    ctx.lineWidth = Math.max(1, cell * 0.06)
-    for (const p of cellsOf(ghost)) {
-      if (p.y < HIDDEN_ROWS) continue
+    const top = new Map<number, number>()
+    const land = new Map<number, number>()
+    for (const p of cellsOf(state.active)) top.set(p.x, Math.max(top.get(p.x) ?? -Infinity, p.y))
+    for (const p of cellsOf(ghost)) land.set(p.x, Math.max(land.get(p.x) ?? -Infinity, p.y))
+    for (const [x, from] of top) {
+      const to = land.get(x)
+      if (to === undefined || to <= from) continue
+      const y0 = Math.max(0, (from + 1 - HIDDEN_ROWS) * cell)
+      const y1 = (to + 1 - HIDDEN_ROWS) * cell
+      if (y1 <= y0) continue
+      const beam = ctx.createLinearGradient(0, y0, 0, y1)
+      beam.addColorStop(0, 'transparent')
+      beam.addColorStop(1, color)
+      ctx.globalAlpha = 0.22
+      ctx.fillStyle = beam
+      ctx.fillRect(at(x) + size * 0.2, y0, size * 0.6, y1 - y0)
+      // Marca en el suelo donde se apoyará
+      ctx.globalAlpha = 0.7
+      ctx.fillStyle = color
       ctx.beginPath()
-      ctx.roundRect(at(p.x) + ctx.lineWidth / 2, at(p.y - HIDDEN_ROWS) + ctx.lineWidth / 2, size - ctx.lineWidth, size - ctx.lineWidth, size * 0.18)
-      ctx.stroke()
+      ctx.roundRect(at(x) + size * 0.2, y1 - gap / 2 - cell * 0.1, size * 0.6, cell * 0.08, cell * 0.04)
+      ctx.fill()
     }
     ctx.globalAlpha = 1
   }
@@ -107,7 +120,7 @@ export function Board({ stateRef, phase, onGesture, children }: Props) {
     const canvas = canvasRef.current
     const ctx = canvas?.getContext('2d')
     if (!wrap || !canvas || !ctx) return
-    const pixel = withAlpha(readThemeColors().text, 0.045)
+    const pixel = withAlpha(readThemeColors().text, 0.14)
     let w = 0
     let h = 0
     const resize = () => {
@@ -199,7 +212,7 @@ export function PiecePreview({ type }: { type: PieceType }) {
   return (
     <svg className={styles.preview} viewBox={`0 0 ${w * 10} ${h * 10}`} style={{ aspectRatio: `${w} / ${h}`, width: `${w * 9}px` }} aria-hidden="true">
       {cells.map((c) => (
-        <rect key={`${c.x}-${c.y}`} x={(c.x - minX) * 10 + 0.5} y={(c.y - minY) * 10 + 0.5} width={9} height={9} rx={2} fill={PIECE_COLORS[type]} />
+        <rect key={`${c.x}-${c.y}`} x={(c.x - minX) * 10 + 0.5} y={(c.y - minY) * 10 + 0.5} width={9} height={9} rx={3.5} fill={PIECE_COLORS[type]} />
       ))}
     </svg>
   )

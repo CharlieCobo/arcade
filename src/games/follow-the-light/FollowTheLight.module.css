@@ -64,20 +64,19 @@
   height: 48px;
 }
 
-/* Las cuatro luces */
+/* Las cuatro luces: botones redondos en cuadrícula y el estado debajo */
 .board {
   position: relative;
-  width: min(100%, calc(100dvh - 200px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), 380px);
+  width: min(100%, calc(100dvh - 270px - env(safe-area-inset-top) - env(safe-area-inset-bottom)), 360px);
   min-width: 240px;
-  aspect-ratio: 1;
   margin: 0 auto;
-  border-radius: 50%;
+  border-radius: var(--radius-lg);
   background: var(--panel);
-  padding: 10px;
+  padding: 16px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 10px;
+  grid-template-rows: auto auto auto;
+  gap: 16px;
   transition: box-shadow 0.2s;
   touch-action: manipulation;
 }
@@ -89,6 +88,8 @@
   animation: shake 0.35s ease-out;
 }
 .pad {
+  aspect-ratio: 1;
+  border-radius: 50%;
   border: 0;
   padding: 0;
   background: color-mix(in srgb, var(--c) 28%, var(--cell));
@@ -102,41 +103,26 @@
 .pad:disabled {
   cursor: default;
 }
-.pad0 {
-  border-radius: 100% 10px 10px 10px;
-}
-.pad1 {
-  border-radius: 10px 100% 10px 10px;
-}
-.pad2 {
-  border-radius: 10px 10px 10px 100%;
-}
-.pad3 {
-  border-radius: 10px 10px 100% 10px;
-}
 .lit {
   background: var(--c);
   box-shadow:
     0 0 30px color-mix(in srgb, var(--c) 65%, transparent),
     inset 0 0 22px rgb(255 255 255 / 0.4);
-  transform: scale(1.015);
+  transform: scale(1.05);
 }
 .idle .lit {
   background: color-mix(in srgb, var(--c) 70%, var(--cell));
   box-shadow: 0 0 18px color-mix(in srgb, var(--c) 35%, transparent);
 }
 
-/* Centro: estado y progreso de la ronda */
+/* Debajo de las luces: estado y progreso de la ronda */
 .hub {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 40%;
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
+  position: relative;
+  grid-column: 1 / -1;
+  min-height: 58px;
+  border-radius: var(--radius-md);
   background: var(--bg);
-  border: 8px solid var(--panel);
+  padding: 8px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -173,8 +159,8 @@
 }
 .burst {
   position: absolute;
-  inset: -8px;
-  border-radius: 50%;
+  inset: -4px;
+  border-radius: var(--radius-md);
   border: 3px solid var(--o);
   animation: ring 0.8s ease-out forwards;
 }

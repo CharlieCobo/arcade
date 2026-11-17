@@ -37,10 +37,10 @@
     "soundOff": "Silenciar som"
   },
   "pads": {
-    "green": "Verde",
-    "red": "Vermelho",
-    "yellow": "Amarelo",
-    "blue": "Azul",
+    "pink": "Rosa",
+    "cyan": "Ciano",
+    "lime": "Lima",
+    "violet": "Violeta",
     "label": "Botão {{color}}"
   },
   "screens": {
@@ -55,6 +55,6 @@
     "keys": "No teclado: Q W A S ou 1 2 3 4"
   },
   "board": {
-    "label": "Siga a luz: quatro botões coloridos"
+    "label": "Siga a luz: quatro luzes coloridas"
   }
 }

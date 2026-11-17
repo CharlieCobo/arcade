@@ -5,7 +5,8 @@ import type { Pad } from './logic'
  * El navegador solo deja sonar audio tras una interacción: llamamos a
  * unlockAudio() al pulsar "Jugar".
  */
-const PAD_TONES: Record<Pad, number> = { 0: 415.3, 1: 310, 2: 252, 3: 209 }
+/** Arpegio de Do mayor (do, mi, sol, do agudo): suena bien en cualquier orden. */
+const PAD_TONES: Record<Pad, number> = { 0: 261.63, 1: 329.63, 2: 392, 3: 523.25 }
 
 let ctx: AudioContext | null = null
 
@@ -39,5 +40,5 @@ function tone(freq: number, ms: number, type: OscillatorType, volume: number) {
   }
 }
 
-export const playPad = (pad: Pad, ms: number) => tone(PAD_TONES[pad], ms, 'triangle', 0.22)
+export const playPad = (pad: Pad, ms: number) => tone(PAD_TONES[pad], ms, 'sine', 0.26)
 export const playError = () => tone(92, 650, 'sawtooth', 0.12)

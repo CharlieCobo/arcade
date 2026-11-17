@@ -37,10 +37,10 @@
     "soundOff": "Mute sound"
   },
   "pads": {
-    "green": "Green",
-    "red": "Red",
-    "yellow": "Yellow",
-    "blue": "Blue",
+    "pink": "Pink",
+    "cyan": "Cyan",
+    "lime": "Lime",
+    "violet": "Violet",
     "label": "{{color}} button"
   },
   "screens": {
@@ -55,6 +55,6 @@
     "keys": "Keyboard: Q W A S or 1 2 3 4"
   },
   "board": {
-    "label": "Follow the Light: four colored buttons"
+    "label": "Follow the Light: four colored lights"
   }
 }
