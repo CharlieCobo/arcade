@@ -23,7 +23,7 @@ const LONG_PRESS_MS = 380
 const MOVE_TOLERANCE = 10
 
 /** Colores de los números con la paleta de la app. */
-const NUMBER_COLORS = ['', '#4cc9f0', '#5ad65a', '#ff5d8f', '#a35cf0', '#f59a3a', '#3b6ff0', '#eef0ff', '#8b8fb8']
+const NUMBER_COLORS = ['', '#4cc9f0', '#5ad65a', '#ff5d8f', '#a35cf0', '#f59a3a', '#3b6ff0', 'var(--text)', 'var(--muted)']
 
 /** Segundos desde `start` (solo se usa en manejadores de eventos y efectos). */
 const secondsSince = (start: number | null) => (start === null ? 0 : (performance.now() - start) / 1000)

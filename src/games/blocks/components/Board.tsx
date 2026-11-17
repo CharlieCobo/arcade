@@ -1,4 +1,5 @@
 import { useEffect, useRef, type ReactNode, type RefObject } from 'react'
+import { readThemeColors, withAlpha } from '@core/theme'
 import { useTranslation } from 'react-i18next'
 import {
   COLS,
@@ -37,7 +38,7 @@ function drawBlock(ctx: CanvasRenderingContext2D, x: number, y: number, size: nu
   ctx.globalAlpha = 1
 }
 
-function draw(ctx: CanvasRenderingContext2D, w: number, h: number, state: BlocksState, phase: Phase) {
+function draw(ctx: CanvasRenderingContext2D, w: number, h: number, state: BlocksState, phase: Phase, pixel: string) {
   const cell = w / COLS
   const gap = cell * 0.08
   const size = cell - gap
@@ -46,7 +47,7 @@ function draw(ctx: CanvasRenderingContext2D, w: number, h: number, state: Blocks
   ctx.clearRect(0, 0, w, h)
 
   // Píxeles apagados, como en el Snake
-  ctx.fillStyle = 'rgb(255 255 255 / 0.035)'
+  ctx.fillStyle = pixel
   for (let y = 0; y < ROWS; y++) {
     for (let x = 0; x < COLS; x++) {
       ctx.beginPath()
@@ -106,6 +107,7 @@ export function Board({ stateRef, phase, onGesture, children }: Props) {
     const canvas = canvasRef.current
     const ctx = canvas?.getContext('2d')
     if (!wrap || !canvas || !ctx) return
+    const pixel = withAlpha(readThemeColors().text, 0.045)
     let w = 0
     let h = 0
     const resize = () => {
@@ -120,7 +122,7 @@ export function Board({ stateRef, phase, onGesture, children }: Props) {
     ro.observe(canvas)
     let raf = 0
     const loop = () => {
-      draw(ctx, w, h, stateRef.current, phaseRef.current)
+      draw(ctx, w, h, stateRef.current, phaseRef.current, pixel)
       raf = requestAnimationFrame(loop)
     }
     raf = requestAnimationFrame(loop)

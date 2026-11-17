@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { vibrate } from '@core/lib/haptics'
 import { useLocalStorage } from '@core/lib/useLocalStorage'
-import { PLAYER_COLORS } from './colors'
+import { readThemeColors } from '@core/theme'
 import { SIZES, cpuMove, createGame, hCount, other, play, type DotsState, type Level, type Player, type Size } from './logic'
 import { useDotsScores, type Mode } from './scores'
 import styles from './DotsAndBoxes.module.css'
@@ -23,6 +23,11 @@ export default function DotsAndBoxes() {
   const level = LEVELS.includes(storedLevel) ? storedLevel : 'normal'
   const size = SIZE_KEYS.includes(storedSize) ? storedSize : 'small'
   const scores = useDotsScores(mode, level)
+  // Colores de los jugadores según el tema activo
+  const [PLAYER_COLORS] = useState<Record<Player, string>>(() => {
+    const c = readThemeColors()
+    return { 1: c.x, 2: c.o }
+  })
 
   const [phase, setPhase] = useState<'menu' | 'playing'>('menu')
   const [starter, setStarter] = useState<Player>(1)
@@ -172,8 +177,12 @@ export default function DotsAndBoxes() {
     : cpuTurn
       ? 'thinking'
       : extraTurn
-        ? 'again'
-        : 'turn'
+        ? mode === 'cpu'
+          ? 'youAgain'
+          : 'again'
+        : mode === 'cpu'
+          ? 'yourTurn'
+          : 'turn'
   const who = game.winner ?? game.turn
 
   return (
@@ -210,7 +219,7 @@ export default function DotsAndBoxes() {
       )}
 
       <div key={`${statusKey}-${game.lastLine}`} className={`${styles.status} ${extraTurn ? styles.again : ''}`} aria-live="polite">
-        {statusKey === 'win' || statusKey === 'turn' || statusKey === 'again' ? (
+        {['win', 'turn', 'again', 'yourTurn', 'youAgain'].includes(statusKey) ? (
           <Trans t={t} i18nKey={`status.${statusKey}`} values={{ name: names[who] }} components={{ player: <span style={{ color: PLAYER_COLORS[who] }} /> }} />
         ) : (
           t(`status.${statusKey}`)

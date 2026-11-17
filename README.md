@@ -66,6 +66,12 @@ Un único store de [zustand](https://zustand.docs.pmnd.rs/) guarda los puntos de
 
 Los juegos usan `useGameScores(GAME_ID)`, cuyas acciones ya llevan el id del juego, y la portada muestra el récord con `useBestScore(id)`. Para récords donde gana el número más bajo (tiempos), se pasa `{ lowerIsBetter: true }` y el manifiesto puede declarar `score: { lowerIsBetter, format }` para que el baúl lo muestre bien. El almacenamiento es un adaptador (`core/scores/storage.ts`): pasar a IndexedDB es cambiar ese archivo.
 
+## Temas
+
+Seis temas que se eligen con el botón de paleta del listado y se guardan en el navegador: **Arcade** (por defecto), **Retro** (paleta CGA, fuente de píxeles y líneas de CRT), **Claro**, **Kawaii** (pasteles y letra redondita), **Cyberpunk** (neón y rejilla) y **Bosque**.
+
+Cada tema redefine las variables CSS de `global.css` sobre `<html data-theme>`. `--x` y `--o` son los colores de los jugadores en todos los juegos; lo que se pinta en canvas o SVG lee el tema activo con `readThemeColors()` de `@core/theme`.
+
 ## Idiomas
 
 Disponible en español, inglés y portugués con [react-i18next](https://react.i18next.com/). El idioma se detecta del navegador (`pt-BR` → `pt`), se puede cambiar con el selector ES/EN/PT y se guarda en `localStorage`. Si el idioma del navegador no está soportado, se usa inglés.

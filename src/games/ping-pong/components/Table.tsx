@@ -1,4 +1,5 @@
 import { useEffect, useRef, type ReactNode, type RefObject } from 'react'
+import { readThemeColors, withAlpha } from '@core/theme'
 import { useTranslation } from 'react-i18next'
 import { BALL_R, FIELD_H, FIELD_W, PADDLE_H, PADDLE_W, PADDLE_Y, type GameEvent, type PongState, type Side } from '../logic'
 import type { Phase } from '../usePingPong'
@@ -13,8 +14,6 @@ interface Props {
   children?: ReactNode
 }
 
-const COLORS: Record<Side, string> = { bottom: '#ff5d8f', top: '#4cc9f0' }
-const TEXT = '#eef0ff'
 const TRAIL = 8
 
 interface Particle {
@@ -46,6 +45,11 @@ export function Table({ stateRef, fxQueue, phase, flipTop, children }: Props) {
     const canvas = canvasRef.current
     const ctx = canvas?.getContext('2d')
     if (!canvas || !ctx) return
+    // Colores del tema activo (no cambia durante la partida)
+    const theme = readThemeColors()
+    const ink = (a: number) => withAlpha(theme.text, a)
+    const COLORS: Record<Side, string> = { bottom: theme.x, top: theme.o }
+    const TEXT = theme.text
     let scale = 1
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
@@ -93,7 +97,7 @@ export function Table({ stateRef, fxQueue, phase, flipTop, children }: Props) {
       ctx.clearRect(0, 0, FIELD_W, FIELD_H)
 
       // Rejilla LCD
-      ctx.fillStyle = 'rgb(255 255 255 / 0.04)'
+      ctx.fillStyle = ink(0.05)
       for (let y = 10; y < FIELD_H; y += 16) for (let x = 8; x < FIELD_W; x += 16) ctx.fillRect(x - 1, y - 1, 2, 2)
 
       // Destello del lado que gana el punto
@@ -109,7 +113,7 @@ export function Table({ stateRef, fxQueue, phase, flipTop, children }: Props) {
       }
 
       // Red
-      ctx.strokeStyle = 'rgb(139 143 184 / 0.45)'
+      ctx.strokeStyle = withAlpha(theme.muted, 0.45)
       ctx.lineWidth = 2
       ctx.setLineDash([8, 8])
       ctx.beginPath()
@@ -119,10 +123,10 @@ export function Table({ stateRef, fxQueue, phase, flipTop, children }: Props) {
       ctx.setLineDash([])
 
       // Marcador grande y tenue a cada lado de la red
-      ctx.font = `700 64px 'Space Grotesk', system-ui, sans-serif`
+      ctx.font = `700 64px ${theme.font}`
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
-      ctx.fillStyle = 'rgb(238 240 255 / 0.1)'
+      ctx.fillStyle = ink(0.1)
       ctx.fillText(String(s.score.bottom), FIELD_W / 2, FIELD_H / 2 + 52)
       ctx.save()
       ctx.translate(FIELD_W / 2, FIELD_H / 2 - 52)

@@ -1,4 +1,5 @@
 import { useEffect, useRef, type ReactNode, type RefObject } from 'react'
+import { withAlpha } from '@core/theme'
 import { useTranslation } from 'react-i18next'
 import type { Direction, SnakeState } from '../logic'
 import type { Phase } from '../useSnakeGame'
@@ -23,7 +24,7 @@ interface Palette {
 function readPalette(el: Element): Palette {
   const css = getComputedStyle(el)
   const v = (name: string) => css.getPropertyValue(name).trim()
-  return { pixel: 'rgb(255 255 255 / 0.035)', snake: v('--o'), food: v('--x'), dead: v('--x') }
+  return { pixel: withAlpha(v('--text'), 0.045), snake: v('--o'), food: v('--x'), dead: v('--x') }
 }
 
 function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, r: number) {

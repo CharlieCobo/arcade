@@ -1,4 +1,5 @@
 import { useEffect, useRef, type ReactNode, type RefObject } from 'react'
+import { readThemeColors, withAlpha } from '@core/theme'
 import { useTranslation } from 'react-i18next'
 import {
   BALL_R,
@@ -43,10 +44,7 @@ interface Props {
   children?: ReactNode
 }
 
-const PINK = '#ff5d8f'
-const CYAN = '#4cc9f0'
 const GREEN = '#5ad65a'
-const TEXT = '#eef0ff'
 const TRAIL = 7
 
 function rr(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
@@ -73,6 +71,12 @@ export function Board({ stateRef, fxQueue, phase, comboLabel, children }: Props)
     const canvas = canvasRef.current
     const ctx = canvas?.getContext('2d')
     if (!canvas || !ctx) return
+    // Colores del tema activo (no cambia durante la partida)
+    const theme = readThemeColors()
+    const ink = (a: number) => withAlpha(theme.text, a)
+    const PINK = theme.x
+    const CYAN = theme.o
+    const TEXT = theme.text
     let scale = 1
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
@@ -122,7 +126,7 @@ export function Board({ stateRef, fxQueue, phase, comboLabel, children }: Props)
       ctx.clearRect(0, 0, FIELD_W, FIELD_H)
 
       // Rejilla de puntos tipo LCD (como en los otros juegos)
-      ctx.fillStyle = 'rgb(255 255 255 / 0.04)'
+      ctx.fillStyle = ink(0.05)
       for (let y = 8; y < FIELD_H; y += 16) for (let x = 8; x < FIELD_W; x += 16) ctx.fillRect(x - 1, y - 1, 2, 2)
 
       // Ladrillos
@@ -170,7 +174,7 @@ export function Board({ stateRef, fxQueue, phase, comboLabel, children }: Props)
       // Cápsulas de power-up
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
-      ctx.font = `700 9px 'Space Grotesk', system-ui, sans-serif`
+      ctx.font = `700 9px ${theme.font}`
       for (const c of s.capsules) {
         ctx.fillStyle = POWER_COLORS[c.type]
         rr(ctx, c.x - CAPSULE_W / 2, c.y - CAPSULE_H / 2, CAPSULE_W, CAPSULE_H, CAPSULE_H / 2)
@@ -243,7 +247,7 @@ export function Board({ stateRef, fxQueue, phase, comboLabel, children }: Props)
         ctx.fillStyle = p.color
         ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size)
       }
-      ctx.font = `700 10px 'Space Grotesk', system-ui, sans-serif`
+      ctx.font = `700 10px ${theme.font}`
       for (let i = texts.length - 1; i >= 0; i--) {
         const f = texts[i]!
         f.life += dt

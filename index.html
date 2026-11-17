@@ -8,6 +8,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="description" content="Baúl de minijuegos para jugar en el móvil." />
     <title>Arcade</title>
+    <script>
+      // Aplica el tema guardado antes de pintar, para que no parpadee
+      try {
+        var t = localStorage.getItem('arcade:theme')
+        if (t) document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

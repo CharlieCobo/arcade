@@ -177,7 +177,7 @@ export default function FourInARow() {
         {status ?? (
           <Trans
             t={t}
-            i18nKey={game.winner ? 'status.win' : 'status.turn'}
+            i18nKey={game.winner ? 'status.win' : mode === 'cpu' ? 'status.yourTurn' : 'status.turn'}
             values={{ name: names[game.winner ?? game.turn] }}
             components={{ player: <span style={{ color: DISC_COLORS[game.winner ?? game.turn] }} /> }}
           />

@@ -17,6 +17,108 @@
   color-scheme: dark;
 }
 
+/* ─── Temas ──────────────────────────────────────────────────────────────────
+   Cada tema cambia la paleta (y en algunos la fuente y las esquinas).
+   --x y --o son los colores de los jugadores en todos los juegos. */
+
+/* Retro: paleta CGA, fuente de píxeles, esquinas rectas y líneas de CRT */
+:root[data-theme='retro'] {
+  --bg: #000000;
+  --panel: #141414;
+  --cell: #222222;
+  --cell-active: #2e2e2e;
+  --cell-win: #3a3a3a;
+  --x: #ff55ff;
+  --o: #55ffff;
+  --text: #ffffff;
+  --muted: #aaaaaa;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --font: 'VT323', ui-monospace, monospace;
+  font-size-adjust: ex-height 0.5;
+}
+:root[data-theme='retro'] body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgb(0 0 0 / 0) 0 2px, rgb(0 0 0 / 0.22) 2px 3px);
+}
+
+/* Claro */
+:root[data-theme='light'] {
+  --bg: #f3f4fa;
+  --panel: #ffffff;
+  --cell: #e6e8f4;
+  --cell-active: #d9dcef;
+  --cell-win: #cbd0ea;
+  --x: #e23d73;
+  --o: #1597c9;
+  --text: #191a33;
+  --muted: #6a6e93;
+  color-scheme: light;
+}
+
+/* Kawaii: pasteles, letra redondita, esquinas muy suaves y lunares de fondo */
+:root[data-theme='kawaii'] {
+  --bg: #fff0f6;
+  --panel: #ffffff;
+  --cell: #ffe0ee;
+  --cell-active: #ffd0e4;
+  --cell-win: #ffc0da;
+  --x: #ff5fa2;
+  --o: #7b8cff;
+  --text: #6a2f55;
+  --muted: #b07b9b;
+  --radius-sm: 14px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --font: 'Fredoka', system-ui, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme='kawaii'] body {
+  background-image: radial-gradient(circle, #ffd6e8 2px, transparent 2.5px);
+  background-size: 26px 26px;
+}
+
+/* Cyberpunk: neón sobre negro violeta, letra técnica y rejilla de fondo */
+:root[data-theme='cyberpunk'] {
+  --bg: #0a0614;
+  --panel: #160d26;
+  --cell: #241540;
+  --cell-active: #301c55;
+  --cell-win: #3d2468;
+  --x: #ff2a6d;
+  --o: #05d9e8;
+  --text: #f5f3ff;
+  --muted: #9a8fc0;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --font: 'Chakra Petch', system-ui, sans-serif;
+}
+:root[data-theme='cyberpunk'] body {
+  background-image:
+    linear-gradient(rgb(5 217 232 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 42 109 / 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Bosque: verdes profundos con coral y menta */
+:root[data-theme='forest'] {
+  --bg: #0e1913;
+  --panel: #15251c;
+  --cell: #1e3427;
+  --cell-active: #264232;
+  --cell-win: #2f503d;
+  --x: #ff8a5b;
+  --o: #79e0a6;
+  --text: #ecf6ef;
+  --muted: #8eab9b;
+}
+
 *,
 *::before,
 *::after {
@@ -33,6 +135,7 @@ body {
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;
   overscroll-behavior: none;
+  transition: background-color 0.25s, color 0.25s;
 }
 
 #root {

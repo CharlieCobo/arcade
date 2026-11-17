@@ -213,7 +213,7 @@
 }
 .ghost path,
 .ghost circle {
-  stroke: rgb(255 255 255 / 0.05);
+  stroke: color-mix(in srgb, var(--text) 7%, transparent);
   stroke-width: 6;
   stroke-dasharray: 2 10;
 }

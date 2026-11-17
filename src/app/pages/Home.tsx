@@ -5,6 +5,7 @@ import { GameCard } from '../components/GameCard'
 import { LanguageSwitcher } from '../components/LanguageSwitcher'
 import { SearchInput } from '../components/SearchInput'
 import { Shell } from '../components/Shell'
+import { ThemePicker } from '../components/ThemePicker'
 import { matchesQuery } from '../lib/search'
 import { games } from '@games'
 import styles from './Home.module.css'
@@ -26,15 +27,21 @@ export function Home() {
 
   return (
     <Shell>
-      <header className={styles.header}>
-        <div>
-          <h1>{t('home.title')}</h1>
-          <p>{t('home.subtitle')}</p>
-        </div>
-        <LanguageSwitcher />
-      </header>
+      {/* Cabecera fija: el buscador queda a mano aunque se haga scroll */}
+      <div className={styles.top}>
+        <header className={styles.header}>
+          <div>
+            <h1>{t('home.title')}</h1>
+            <p>{t('home.subtitle')}</p>
+          </div>
+          <div className={styles.tools}>
+            <ThemePicker />
+            <LanguageSwitcher />
+          </div>
+        </header>
 
-      <SearchInput value={query} onChange={setQuery} pending={pending} />
+        <SearchInput value={query} onChange={setQuery} pending={pending} />
+      </div>
 
       {visible.length > 0 ? (
         <ul className={styles.list}>
