@@ -15,6 +15,7 @@ Baúl de minijuegos para el móvil, en español, inglés y portugués. PWA hecha
 | **Simón dice** | Memoriza y repite la secuencia de cuatro luces con sus tonos clásicos (Web Audio). Modo Clásico o Al revés; Relajado (3 vidas) o Estricto (como el original). Se acelera según avanza, con celebración cada 5 rondas. Récord por modo. |
 | **4 en raya** | Suelta fichas y conecta cuatro: 2 jugadores en el mismo móvil o contra la CPU (minimax con poda alfa-beta; Fácil/Normal/Difícil). Caída animada con rebote, línea ganadora iluminada. Récord: mejor racha invicto contra la CPU por dificultad. |
 | **Buscaminas** | Descubre las casillas sin pisar minas. Tableros en vertical (9×9, 10×14, 12×18), primer toque siempre seguro, pulsación larga o modo bandera, abrir alrededor de un número, apertura en cascada y carita clásica. Récord: mejor tiempo por dificultad. |
+| **Timbiriche** | Une puntos para cerrar cajas; cerrar una caja da otro turno. Tableros 4×4, 5×6 y 6×8, 2 jugadores o contra la CPU (Fácil, Normal, Difícil, que sacrifica las cadenas más cortas). Récord: racha invicto contra la CPU por dificultad. |
 
 ## Desarrollo
 

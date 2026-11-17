@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Pontinhos",
+    "description": "Ligue pontos e feche quadrados: cada quadrado que completar é seu e você joga de novo.",
+    "tags": [
+      "2 jogadores",
+      "vs CPU"
+    ]
+  },
+  "modes": {
+    "label": "Modo de jogo",
+    "pvp": "2 jogadores",
+    "cpu": "Contra a CPU",
+    "pvpHint": "Revezem no mesmo celular. Fechou um quadrado, joga de novo.",
+    "cpuHint": "Você joga de rosa. Fechou um quadrado, joga de novo."
+  },
+  "level": {
+    "label": "Dificuldade",
+    "easy": "Fácil",
+    "normal": "Normal",
+    "hard": "Difícil"
+  },
+  "size": {
+    "label": "Tabuleiro",
+    "small": "Pequeno",
+    "medium": "Médio",
+    "large": "Grande",
+    "boxes": "{{cols}}×{{rows}} quadrados"
+  },
+  "players": {
+    "you": "Você",
+    "p1": "Jogador 1",
+    "p2": "Jogador 2",
+    "cpu": "CPU"
+  },
+  "status": {
+    "turn": "Vez de <player>{{name}}</player>",
+    "again": "De novo, <player>{{name}}</player>!",
+    "win": "<player>{{name}}</player> venceu! 🎉",
+    "youWin": "Você venceu! 🎉",
+    "youLose": "A CPU venceu",
+    "draw": "Empate!",
+    "thinking": "A CPU está pensando…"
+  },
+  "board": {
+    "label": "Tabuleiro de pontos",
+    "hLine": "Linha horizontal, fila {{r}}, entre as colunas {{c}} e {{c2}}",
+    "vLine": "Linha vertical, coluna {{c}}, entre as filas {{r}} e {{r2}}"
+  },
+  "streak": {
+    "current": "Sequência invicta",
+    "best": "Melhor: {{count}}",
+    "newBest": "Nova melhor sequência!",
+    "rules": "A sequência soma cada vitória seguida contra a CPU (empates não a quebram). Perder ou abandonar uma partida em andamento a zera."
+  },
+  "actions": {
+    "play": "Jogar",
+    "newGame": "Nova partida",
+    "menu": "Menu",
+    "record": "🏆 Melhor sequência: {{n}}"
+  }
+}

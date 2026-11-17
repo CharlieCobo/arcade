@@ -7,6 +7,7 @@ import hangman from './hangman'
 import simon from './simon'
 import fourInARow from './four-in-a-row'
 import minesweeper from './minesweeper'
+import dotsAndBoxes from './dots-and-boxes'
 
 /**
  * Baúl de juegos. Para añadir uno nuevo:
@@ -15,7 +16,7 @@ import minesweeper from './minesweeper'
  *
  * Regla: un juego solo puede importar de @core, nunca de otro juego ni de @app.
  */
-export const games = [infiniteTicTacToe, snake, blocks, brickBash, pingPong, hangman, simon, fourInARow, minesweeper] as const
+export const games = [infiniteTicTacToe, snake, blocks, brickBash, pingPong, hangman, simon, fourInARow, minesweeper, dotsAndBoxes] as const
 
 export type Game = (typeof games)[number]
 export type GameId = Game['id']

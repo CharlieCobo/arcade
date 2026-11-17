@@ -1,0 +1,285 @@
+.game {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Menú */
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  padding: 20px 16px;
+  text-align: center;
+  animation: fade 0.2s ease-out;
+}
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+.optionLabel {
+  color: var(--muted);
+  font-size: 12px;
+}
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.segmented {
+  display: flex;
+  width: 100%;
+  max-width: 320px;
+  background: var(--bg);
+  border-radius: var(--radius-md);
+  padding: 4px;
+}
+.segmented button {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 9px 4px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+.segmented button[aria-pressed='true'] {
+  background: var(--cell);
+  color: var(--text);
+}
+.primary,
+.ghost {
+  flex: 1;
+  width: 100%;
+  max-width: 260px;
+  border: 0;
+  border-radius: var(--radius-md);
+  padding: 13px 20px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+.primary {
+  background: var(--text);
+  color: var(--bg);
+}
+.ghost {
+  background: var(--panel);
+}
+
+/* Marcador */
+.score {
+  display: flex;
+  gap: 10px;
+}
+.pcard {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 10px 14px;
+  border: 2px solid transparent;
+  border-left: 6px solid var(--c);
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+.active {
+  border-color: var(--c);
+  transform: translateY(-2px);
+}
+.pname {
+  color: var(--muted);
+  font-size: 13px;
+}
+.pts {
+  font-size: 22px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  animation: pop 0.3s ease-out;
+}
+.bar {
+  display: flex;
+  height: 6px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--panel);
+}
+.bar span {
+  transition: width 0.35s ease-out;
+}
+
+/* Racha */
+.streak {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 9px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 2px solid transparent;
+}
+.hot {
+  border-color: color-mix(in srgb, var(--x) 45%, transparent);
+}
+.streakValue {
+  margin-left: 4px;
+  font-size: 18px;
+}
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 400;
+}
+.newBest {
+  color: var(--x);
+  font-size: 13px;
+  font-weight: 700;
+  animation: pop 0.4s ease-out;
+}
+
+.status {
+  text-align: center;
+  font-weight: 600;
+  min-height: 24px;
+}
+.again {
+  animation: pop 0.3s ease-out;
+}
+
+/* Tablero */
+.board {
+  display: block;
+  width: min(100%, calc((100dvh - 360px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * var(--ratio)));
+  min-width: 240px;
+  margin: 0 auto;
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  touch-action: manipulation;
+  aspect-ratio: var(--ratio);
+}
+.dot {
+  fill: var(--text);
+  pointer-events: none;
+}
+.guide {
+  stroke: rgb(255 255 255 / 0.07);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 2 14;
+  pointer-events: none;
+}
+.line {
+  stroke-width: 11;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  pointer-events: none;
+}
+.lastLine {
+  animation: draw 0.25s ease-out both, glow 1.2s ease-in-out 0.25s infinite alternate;
+}
+.hit {
+  stroke: transparent;
+  stroke-width: 48;
+  stroke-linecap: round;
+  cursor: pointer;
+  outline: none;
+}
+/* Al señalar o enfocar una línea libre, se ve en el color de quien juega */
+.hit:hover,
+.hit:focus-visible {
+  stroke: color-mix(in srgb, var(--turn) 35%, transparent);
+  stroke-width: 11;
+}
+.freshBox {
+  animation: popBox 0.35s ease-out;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.rules {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+}
+
+.confetti {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  pointer-events: none;
+}
+.confetti span {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--c);
+  --angle: calc(var(--i) * 22.5deg);
+  animation: fly 1s ease-out forwards;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+@keyframes glow {
+  to {
+    opacity: 0.6;
+  }
+}
+@keyframes popBox {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+}
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@keyframes fly {
+  from {
+    transform: rotate(var(--angle)) translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(var(--angle)) translateY(-190px) scale(0.4);
+    opacity: 0;
+  }
+}
