@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { vibrate } from '@core/lib/haptics'
 import { useLocalStorage } from '@core/lib/useLocalStorage'
+import { DPad } from '@core/ui'
 import { Board } from './components/Board'
-import { DPad } from './components/DPad'
 import { Overlay } from './components/Overlay'
 import { DEFAULT_LEVEL, clampLevel, type Direction, type Mode } from './logic'
 import { useSnakeScores } from './scores'
@@ -108,12 +108,23 @@ export default function Snake() {
         />
       </Board>
 
-      <DPad
-        onDirection={steer}
-        onCenter={primaryAction}
-        centerIcon={phase === 'playing' ? 'pause' : 'play'}
-        centerLabel={phase === 'playing' ? t('hud.pause') : phase === 'paused' ? t('hud.resume') : t('screens.play')}
-      />
+      <div className={styles.controls}>
+        <DPad
+          onPress={steer}
+          labels={{
+            group: t('dpad.label'),
+            up: t('dpad.up'),
+            down: t('dpad.down'),
+            left: t('dpad.left'),
+            right: t('dpad.right'),
+          }}
+          center={{
+            icon: phase === 'playing' ? 'pause' : 'play',
+            label: phase === 'playing' ? t('hud.pause') : phase === 'paused' ? t('hud.resume') : t('screens.play'),
+            onPress: primaryAction,
+          }}
+        />
+      </div>
     </div>
   )
 }
