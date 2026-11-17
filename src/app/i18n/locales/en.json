@@ -3,7 +3,12 @@
     "title": "Arcade",
     "subtitle": "Your mini-game chest",
     "comingSoon": "More games coming soon",
-    "best": "Best: {{score}}"
+    "best": "Best: {{score}}",
+    "search": "Search games",
+    "searchPlaceholder": "Search by name",
+    "clear": "Clear search",
+    "searching": "Searching…",
+    "noResults": "No games match “{{query}}”."
   },
   "game": {
     "back": "Back to the chest",

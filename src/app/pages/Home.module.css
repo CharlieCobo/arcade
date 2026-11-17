@@ -89,3 +89,10 @@
   background: color-mix(in srgb, var(--accent) 18%, transparent);
   color: var(--text);
 }
+.empty {
+  margin: 8px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}

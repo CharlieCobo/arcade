@@ -3,7 +3,12 @@
     "title": "Arcade",
     "subtitle": "Seu baú de minijogos",
     "comingSoon": "Mais jogos em breve",
-    "best": "Recorde: {{score}}"
+    "best": "Recorde: {{score}}",
+    "search": "Buscar jogo",
+    "searchPlaceholder": "Buscar pelo nome",
+    "clear": "Limpar busca",
+    "searching": "Buscando…",
+    "noResults": "Nenhum jogo corresponde a “{{query}}”."
   },
   "game": {
     "back": "Voltar ao baú",
