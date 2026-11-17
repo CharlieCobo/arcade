@@ -18,6 +18,12 @@ export interface GameManifest<Id extends string = string, Messages extends GameM
   /** Pantalla del juego, cargada bajo demanda */
   Component: LazyExoticComponent<ComponentType>
   locales: Record<Language, Messages>
+  /** Cómo se muestra el récord en el baúl (por defecto: el más alto, abreviado como 2.5K) */
+  score?: {
+    /** El récord es el número más bajo (p. ej. un tiempo) */
+    lowerIsBetter?: boolean
+    format?: (value: number) => string
+  }
 }
 
 /** Helper para declarar un juego conservando los tipos literales de id y textos. */

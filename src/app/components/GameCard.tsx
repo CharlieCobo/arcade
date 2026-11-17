@@ -6,9 +6,12 @@ import { useBestScore } from '@core/scores'
 import type { Game } from '@games'
 import styles from '../pages/Home.module.css'
 
-export function GameCard({ id, accent, Icon }: Game) {
+export function GameCard({ id, accent, Icon, score }: Game) {
   const { t, i18n } = useTranslation([id, 'common'])
-  const best = useBestScore(id)
+  const best = useBestScore(id, undefined, score)
+  const format = score?.format ?? formatCompact
+  // Valor completo (o el formato propio del juego, p. ej. un tiempo)
+  const full = best === null ? '' : score?.format ? score.format(best) : best.toLocaleString(i18n.resolvedLanguage)
   const tags = t('meta.tags', { returnObjects: true })
 
   return (
@@ -33,10 +36,10 @@ export function GameCard({ id, accent, Icon }: Game) {
             <span
               className={`${styles.tag} ${styles.best}`}
               // El número completo para lectores de pantalla y al mantener pulsado
-              title={best.toLocaleString(i18n.resolvedLanguage)}
-              aria-label={t('home.best', { ns: 'common', score: best.toLocaleString(i18n.resolvedLanguage) })}
+              title={full}
+              aria-label={t('home.best', { ns: 'common', score: full })}
             >
-              🏆 {t('home.best', { ns: 'common', score: formatCompact(best) })}
+              🏆 {t('home.best', { ns: 'common', score: format(best) })}
             </span>
           )}
         </div>

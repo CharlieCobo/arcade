@@ -5,6 +5,7 @@ export {
   HISTORY_LIMIT,
   useScoresStore,
   type GameScores,
+  type RecordOptions,
   type ScoreEntry,
   type SubmitResult,
 } from './store'

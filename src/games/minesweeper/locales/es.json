@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "title": "Buscaminas",
+    "description": "Descubre todas las casillas sin pisar ninguna mina. Los números te dicen cuántas hay alrededor.",
+    "tags": [
+      "1 jugador",
+      "Lógica"
+    ]
+  },
+  "difficulty": {
+    "label": "Dificultad",
+    "easy": "Fácil",
+    "normal": "Normal",
+    "hard": "Difícil"
+  },
+  "hud": {
+    "mines": "Minas restantes",
+    "time": "Tiempo",
+    "restart": "Nueva partida"
+  },
+  "tools": {
+    "flagMode": "Modo bandera",
+    "flagHint": "Mantén pulsada una casilla para poner o quitar una bandera. Toca un número con sus banderas puestas para abrir alrededor.",
+    "firstTap": "Toca cualquier casilla para empezar: el primer toque siempre es seguro."
+  },
+  "cell": {
+    "hidden": "Tapada",
+    "flag": "Bandera",
+    "empty": "Vacía",
+    "mine": "Mina",
+    "near_one": "{{count}} mina cerca",
+    "near_other": "{{count}} minas cerca",
+    "position": "fila {{r}}, columna {{c}}"
+  },
+  "status": {
+    "won": "¡Despejado! 😎",
+    "lost": "¡Boom! Has pisado una mina",
+    "newRecord": "¡Nuevo récord!",
+    "time": "Tiempo: {{time}}",
+    "record": "🏆 Récord: {{time}}"
+  },
+  "board": {
+    "label": "Campo de minas"
+  }
+}
