@@ -210,7 +210,7 @@ describe('generador y fin de partida', () => {
   it('termina si la nueva pieza no cabe', () => {
     const board = emptyBoard()
     // Todo lleno salvo las columnas 0 y 9 (así no se completa ninguna línea)
-    for (let y = 0; y < TOTAL_ROWS; y++) fillRow(board, y, [0, 9])
+    for (let y = 0; y < TOTAL_ROWS; y++) fillRow(board, y, [0, COLS - 1])
     const s = makeState({ type: 'I', rotation: 1, x: -2, y: 0 }, board)
     expect(hardDrop(s, rng0).status).toBe('over')
   })
