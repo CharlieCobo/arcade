@@ -49,6 +49,16 @@ describe('recordBest', () => {
   })
 })
 
+describe('récords donde menos es mejor (tiempos)', () => {
+  it('el primer tiempo es récord y luego solo si es menor', () => {
+    const lower = { lowerIsBetter: true }
+    expect(store().submitScore('mines', 90, 'easy', lower).isRecord).toBe(true)
+    expect(store().submitScore('mines', 120, 'easy', lower).isRecord).toBe(false)
+    expect(store().submitScore('mines', 75, 'easy', lower)).toEqual({ isRecord: true, previousBest: 90 })
+    expect(store().games.mines?.best.easy).toBe(75)
+  })
+})
+
 describe('contadores', () => {
   it('setCounter fija un valor', () => {
     store().increment('ttt', 'streak', 4)

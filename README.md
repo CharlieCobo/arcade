@@ -14,6 +14,7 @@ Baúl de minijuegos para el móvil, en español, inglés y portugués. PWA hecha
 | **Ahorcado** | Adivina la palabra letra a letra. Modo solo (palabras propias en ES/EN/PT por categoría: animales, comida, países, objetos) o contra un amigo (uno escribe la palabra en secreto). Fácil/Normal/Difícil (10/6/4 fallos), pista que cuesta un intento, dibujo animado. Récord: mejor racha en solo. |
 | **Simón dice** | Memoriza y repite la secuencia de cuatro luces con sus tonos clásicos (Web Audio). Modo Clásico o Al revés; Relajado (3 vidas) o Estricto (como el original). Se acelera según avanza, con celebración cada 5 rondas. Récord por modo. |
 | **4 en raya** | Suelta fichas y conecta cuatro: 2 jugadores en el mismo móvil o contra la CPU (minimax con poda alfa-beta; Fácil/Normal/Difícil). Caída animada con rebote, línea ganadora iluminada. Récord: mejor racha invicto contra la CPU por dificultad. |
+| **Buscaminas** | Descubre las casillas sin pisar minas. Tableros en vertical (9×9, 10×14, 12×18), primer toque siempre seguro, pulsación larga o modo bandera, abrir alrededor de un número, apertura en cascada y carita clásica. Récord: mejor tiempo por dificultad. |
 
 ## Desarrollo
 
@@ -62,7 +63,7 @@ Un único store de [zustand](https://zustand.docs.pmnd.rs/) guarda los puntos de
 - `counters`: contadores libres (p. ej. victorias por modo y jugador).
 - `history`: últimas 20 partidas.
 
-Los juegos usan `useGameScores(GAME_ID)`, cuyas acciones ya llevan el id del juego, y la portada muestra el récord con `useBestScore(id)`. El almacenamiento es un adaptador (`core/scores/storage.ts`): pasar a IndexedDB es cambiar ese archivo.
+Los juegos usan `useGameScores(GAME_ID)`, cuyas acciones ya llevan el id del juego, y la portada muestra el récord con `useBestScore(id)`. Para récords donde gana el número más bajo (tiempos), se pasa `{ lowerIsBetter: true }` y el manifiesto puede declarar `score: { lowerIsBetter, format }` para que el baúl lo muestre bien. El almacenamiento es un adaptador (`core/scores/storage.ts`): pasar a IndexedDB es cambiar ese archivo.
 
 ## Idiomas
 

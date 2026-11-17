@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "title": "Campo minado",
+    "description": "Descubra todas as casas sem pisar em nenhuma mina. Os números dizem quantas há ao redor.",
+    "tags": [
+      "1 jogador",
+      "Lógica"
+    ]
+  },
+  "difficulty": {
+    "label": "Dificuldade",
+    "easy": "Fácil",
+    "normal": "Normal",
+    "hard": "Difícil"
+  },
+  "hud": {
+    "mines": "Minas restantes",
+    "time": "Tempo",
+    "restart": "Nova partida"
+  },
+  "tools": {
+    "flagMode": "Modo bandeira",
+    "flagHint": "Mantenha pressionada uma casa para pôr ou tirar uma bandeira. Toque em um número com as bandeiras colocadas para abrir ao redor.",
+    "firstTap": "Toque em qualquer casa para começar: o primeiro toque é sempre seguro."
+  },
+  "cell": {
+    "hidden": "Coberta",
+    "flag": "Bandeira",
+    "empty": "Vazia",
+    "mine": "Mina",
+    "near_one": "{{count}} mina perto",
+    "near_other": "{{count}} minas perto",
+    "position": "linha {{r}}, coluna {{c}}"
+  },
+  "status": {
+    "won": "Campo limpo! 😎",
+    "lost": "Bum! Você pisou em uma mina",
+    "newRecord": "Novo recorde!",
+    "time": "Tempo: {{time}}",
+    "record": "🏆 Recorde: {{time}}"
+  },
+  "board": {
+    "label": "Campo minado"
+  }
+}

@@ -22,6 +22,11 @@ export interface GameScores {
   history: ScoreEntry[]
 }
 
+/** Para récords donde gana el número más bajo (p. ej. tiempos). */
+export interface RecordOptions {
+  lowerIsBetter?: boolean
+}
+
 export interface SubmitResult {
   isRecord: boolean
   previousBest: number
@@ -30,9 +35,9 @@ export interface SubmitResult {
 interface ScoresState {
   games: Record<string, GameScores>
   /** Guarda una partida en el historial y actualiza el récord del modo si lo supera. */
-  submitScore: (gameId: string, score: number, mode?: string) => SubmitResult
+  submitScore: (gameId: string, score: number, mode?: string, opts?: RecordOptions) => SubmitResult
   /** Actualiza el récord del modo si lo supera, sin añadir nada al historial (p. ej. rachas). */
-  recordBest: (gameId: string, score: number, mode?: string) => SubmitResult
+  recordBest: (gameId: string, score: number, mode?: string, opts?: RecordOptions) => SubmitResult
   increment: (gameId: string, key: string, by?: number) => void
   setCounter: (gameId: string, key: string, value: number) => void
   /** Pone a cero los contadores del juego (solo los que empiezan por `prefix`, si se indica). */
@@ -58,15 +63,16 @@ export const useScoresStore = create<ScoresState>()(
       return {
         games: {},
 
-        recordBest: (gameId, score, mode = DEFAULT_MODE) => {
-          const previousBest = get().games[gameId]?.best[mode] ?? 0
-          const isRecord = score > previousBest
+        recordBest: (gameId, score, mode = DEFAULT_MODE, opts) => {
+          const previous = get().games[gameId]?.best[mode]
+          const previousBest = previous ?? 0
+          const isRecord = opts?.lowerIsBetter ? previous === undefined || score < previous : score > previousBest
           if (isRecord) update(gameId, (g) => ({ ...g, best: { ...g.best, [mode]: score } }))
           return { isRecord, previousBest }
         },
 
-        submitScore: (gameId, score, mode = DEFAULT_MODE) => {
-          const result = get().recordBest(gameId, score, mode)
+        submitScore: (gameId, score, mode = DEFAULT_MODE, opts) => {
+          const result = get().recordBest(gameId, score, mode, opts)
           update(gameId, (g) => ({
             ...g,
             history: [{ score, mode, at: Date.now() }, ...g.history].slice(0, HISTORY_LIMIT),

@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "title": "Minesweeper",
+    "description": "Uncover every safe square without stepping on a mine. Numbers tell you how many are nearby.",
+    "tags": [
+      "1 player",
+      "Logic"
+    ]
+  },
+  "difficulty": {
+    "label": "Difficulty",
+    "easy": "Easy",
+    "normal": "Normal",
+    "hard": "Hard"
+  },
+  "hud": {
+    "mines": "Mines left",
+    "time": "Time",
+    "restart": "New game"
+  },
+  "tools": {
+    "flagMode": "Flag mode",
+    "flagHint": "Press and hold a square to place or remove a flag. Tap a number with all its flags placed to open around it.",
+    "firstTap": "Tap any square to start: the first tap is always safe."
+  },
+  "cell": {
+    "hidden": "Covered",
+    "flag": "Flag",
+    "empty": "Empty",
+    "mine": "Mine",
+    "near_one": "{{count}} mine nearby",
+    "near_other": "{{count}} mines nearby",
+    "position": "row {{r}}, column {{c}}"
+  },
+  "status": {
+    "won": "Cleared! 😎",
+    "lost": "Boom! You hit a mine",
+    "newRecord": "New record!",
+    "time": "Time: {{time}}",
+    "record": "🏆 Best: {{time}}"
+  },
+  "board": {
+    "label": "Minefield"
+  }
+}
