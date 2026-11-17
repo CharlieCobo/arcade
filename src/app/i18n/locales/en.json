@@ -1,6 +1,6 @@
 {
   "home": {
-    "title": "Arcade",
+    "title": "Baulix",
     "subtitle": "Your mini-game chest",
     "comingSoon": "More games coming soon",
     "best": "Best: {{score}}",
@@ -27,7 +27,7 @@
   "theme": {
     "label": "Theme",
     "names": {
-      "arcade": "Arcade",
+      "arcade": "Baulix",
       "retro": "Retro",
       "light": "Light",
       "kawaii": "Kawaii",
