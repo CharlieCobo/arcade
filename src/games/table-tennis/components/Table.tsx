@@ -2,8 +2,8 @@ import { useEffect, useRef, type ReactNode, type RefObject } from 'react'
 import { readThemeColors, withAlpha } from '@core/theme'
 import { useTranslation } from 'react-i18next'
 import { BALL_R, FIELD_H, FIELD_W, PADDLE_H, PADDLE_W, PADDLE_Y, type GameEvent, type PongState, type Side } from '../logic'
-import type { Phase } from '../usePingPong'
-import styles from '../PingPong.module.css'
+import type { Phase } from '../useTableTennis'
+import styles from '../TableTennis.module.css'
 
 interface Props {
   stateRef: RefObject<PongState>
@@ -34,7 +34,7 @@ function rr(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: n
 
 /** Mesa dibujada en canvas a partir de las coordenadas lógicas; los efectos son solo visuales. */
 export function Table({ stateRef, fxQueue, phase, flipTop, children }: Props) {
-  const { t } = useTranslation('ping-pong')
+  const { t } = useTranslation('table-tennis')
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const live = useRef({ phase, flipTop })
   useEffect(() => {

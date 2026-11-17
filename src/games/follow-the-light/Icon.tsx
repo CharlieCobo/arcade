@@ -1,7 +1,7 @@
 import { PAD_COLORS } from './colors'
 
 /** Las cuatro luces en círculo, con una encendida. */
-export function SimonIcon({ size = 56 }: { size?: number }) {
+export function FollowTheLightIcon({ size = 56 }: { size?: number }) {
   const r = 24
   const c = 32
   const gap = 2.2

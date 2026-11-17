@@ -10,7 +10,7 @@ import {
   stepDuration,
   stepGap,
   type Pad,
-  type SimonState,
+  type LightState,
 } from './logic'
 
 /** Generador que devuelve los botones indicados en orden. */
@@ -20,7 +20,7 @@ const seq = (...pads: Pad[]) => {
 }
 
 /** Repite correctamente toda la ronda actual. */
-function playRound(s: SimonState, rng: () => number): SimonState {
+function playRound(s: LightState, rng: () => number): LightState {
   let state = finishShowing(s)
   const n = state.sequence.length
   for (let i = 0; i < n; i++) state = press(state, expected(state), rng).state
@@ -35,7 +35,7 @@ describe('secuencia', () => {
     expect(currentRound(s)).toBe(1)
   })
 
-  it('no se puede pulsar mientras Simón enseña la secuencia', () => {
+  it('no se puede pulsar mientras el juego enseña la secuencia', () => {
     const s = createGame({}, seq(2))
     expect(press(s, 2).result).toBe('ignored')
   })

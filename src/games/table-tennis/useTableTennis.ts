@@ -34,7 +34,7 @@ export interface Hud {
  * Bucle de juego. El estado vive en un ref (lo lee el canvas cada frame);
  * a React solo llegan el marcador, el rally y la fase.
  */
-export function usePingPong(options: Options, callbacks: Callbacks) {
+export function useTableTennis(options: Options, callbacks: Callbacks) {
   const [initial] = useState(() => createGame(options))
   const stateRef = useRef<PongState>(initial)
   const fxQueue = useRef<GameEvent[]>([])

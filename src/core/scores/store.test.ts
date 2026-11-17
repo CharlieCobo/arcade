@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { scoresStorage } from './storage'
-import { HISTORY_LIMIT, useScoresStore } from './store'
+import { HISTORY_LIMIT, migrateScores, useScoresStore } from './store'
 
 const store = () => useScoresStore.getState()
 
@@ -95,8 +95,31 @@ describe('persistencia', () => {
     store().submitScore('snake', 42, 'classic')
     const raw = await scoresStorage.getItem('arcade:scores')
     const saved = JSON.parse(raw as string)
-    expect(saved.version).toBe(1)
+    expect(saved.version).toBe(2)
     expect(saved.state.games.snake.best.classic).toBe(42)
     expect(saved.state.submitScore).toBeUndefined() // solo datos, no acciones
+  })
+})
+
+describe('migración de ids renombrados', () => {
+  const entry = { best: { default: 12 }, counters: { wins: 3 }, history: [] }
+
+  it('mueve simon y ping-pong a sus ids nuevos', () => {
+    const out = migrateScores({ games: { simon: entry, 'ping-pong': entry, snake: entry } }, 1)
+    expect(out.games['follow-the-light']?.best.default).toBe(12)
+    expect(out.games['table-tennis']?.counters.wins).toBe(3)
+    expect(out.games.simon).toBeUndefined()
+    expect(out.games['ping-pong']).toBeUndefined()
+    expect(out.games.snake).toBe(entry)
+  })
+
+  it('no pisa datos que ya existan con el id nuevo', () => {
+    const fresh = { best: { default: 99 }, counters: {}, history: [] }
+    const out = migrateScores({ games: { simon: entry, 'follow-the-light': fresh } }, 1)
+    expect(out.games['follow-the-light']).toBe(fresh)
+  })
+
+  it('tolera un estado vacío', () => {
+    expect(migrateScores(undefined, 0).games).toEqual({})
   })
 })

@@ -5,24 +5,24 @@ import { useLocalStorage } from '@core/lib/useLocalStorage'
 import { Overlay } from './components/Overlay'
 import { Table } from './components/Table'
 import { FIELD_W, TARGETS, type CpuLevel, type GameEvent, type Mode, type Side } from './logic'
-import { usePingPongScores } from './scores'
-import { usePingPong } from './usePingPong'
-import styles from './PingPong.module.css'
+import { useTableTennisScores } from './scores'
+import { useTableTennis } from './useTableTennis'
+import styles from './TableTennis.module.css'
 
 /** Sensibilidad del arrastre: >1 = la pala recorre más que el dedo */
 const DRAG_GAIN = 1.3
 const LEVELS: CpuLevel[] = ['easy', 'normal', 'hard']
 
-export default function PingPong() {
-  const { t } = useTranslation('ping-pong')
-  const [storedMode, setMode] = useLocalStorage<Mode>('ping-pong:mode', 'cpu')
-  const [storedLevel, setLevel] = useLocalStorage<CpuLevel>('ping-pong:level', 'normal')
-  const [storedTarget, setTarget] = useLocalStorage<number>('ping-pong:target', 7)
+export default function TableTennis() {
+  const { t } = useTranslation('table-tennis')
+  const [storedMode, setMode] = useLocalStorage<Mode>('table-tennis:mode', 'cpu')
+  const [storedLevel, setLevel] = useLocalStorage<CpuLevel>('table-tennis:level', 'normal')
+  const [storedTarget, setTarget] = useLocalStorage<number>('table-tennis:target', 7)
   const mode: Mode = storedMode === 'pvp' ? 'pvp' : 'cpu'
   const cpuLevel = LEVELS.includes(storedLevel) ? storedLevel : 'normal'
   const target = (TARGETS as readonly number[]).includes(storedTarget) ? storedTarget : 7
 
-  const { bestRally: recordRally, submit } = usePingPongScores()
+  const { bestRally: recordRally, submit } = useTableTennisScores()
   const [result, setResult] = useState<{ winner: Side; bestRally: number; isRecord: boolean } | null>(null)
 
   const onEvents = (events: GameEvent[]) => {
@@ -32,7 +32,7 @@ export default function PingPong() {
     }
   }
 
-  const game = usePingPong(
+  const game = useTableTennis(
     { mode, cpuLevel, target },
     {
       onEvents,

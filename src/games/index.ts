@@ -2,9 +2,9 @@ import infiniteTicTacToe from './infinite-tic-tac-toe'
 import snake from './snake'
 import blocks from './blocks'
 import brickBash from './brick-bash'
-import pingPong from './ping-pong'
+import tableTennis from './table-tennis'
 import hangman from './hangman'
-import simon from './simon'
+import followTheLight from './follow-the-light'
 import fourInARow from './four-in-a-row'
 import minesweeper from './minesweeper'
 import dotsAndBoxes from './dots-and-boxes'
@@ -16,7 +16,7 @@ import dotsAndBoxes from './dots-and-boxes'
  *
  * Regla: un juego solo puede importar de @core, nunca de otro juego ni de @app.
  */
-export const games = [infiniteTicTacToe, snake, blocks, brickBash, pingPong, hangman, simon, fourInARow, minesweeper, dotsAndBoxes] as const
+export const games = [infiniteTicTacToe, snake, blocks, brickBash, tableTennis, hangman, followTheLight, fourInARow, minesweeper, dotsAndBoxes] as const
 
 export type Game = (typeof games)[number]
 export type GameId = Game['id']

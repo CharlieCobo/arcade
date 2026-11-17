@@ -5,7 +5,7 @@ import { GAME_ID } from './meta'
 /** Récord: el rally más largo (en cualquier modo). Además, victorias y derrotas. */
 export const RALLY_MODE = 'rally'
 
-export function usePingPongScores() {
+export function useTableTennisScores() {
   const scores = useGameScores(GAME_ID)
   return {
     bestRally: scores.best[RALLY_MODE] ?? 0,

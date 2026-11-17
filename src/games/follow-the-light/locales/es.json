@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Simón dice",
+    "title": "Sigue la luz",
     "description": "Memoriza y repite la secuencia de luces y sonidos. Cada ronda, un paso más.",
     "tags": [
       "1 jugador",
@@ -19,7 +19,7 @@
     "relaxed": "Relajado",
     "strict": "Estricto",
     "relaxedHint": "3 vidas: si fallas, se repite la secuencia.",
-    "strictHint": "Como el original: al primer fallo, se acaba."
+    "strictHint": "Sin segundas oportunidades: al primer fallo, se acaba."
   },
   "status": {
     "watch": "Mira…",
@@ -55,6 +55,6 @@
     "keys": "En el teclado: Q W A S o 1 2 3 4"
   },
   "board": {
-    "label": "Simón dice: cuatro botones de colores"
+    "label": "Sigue la luz: cuatro botones de colores"
   }
 }

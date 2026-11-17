@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Simão diz",
+    "title": "Siga a luz",
     "description": "Memorize e repita a sequência de luzes e sons. A cada rodada, um passo a mais.",
     "tags": [
       "1 jogador",
@@ -19,7 +19,7 @@
     "relaxed": "Tranquilo",
     "strict": "Rigoroso",
     "relaxedHint": "3 vidas: se errar, a sequência se repete.",
-    "strictHint": "Como o original: no primeiro erro, acabou."
+    "strictHint": "Sem segundas chances: no primeiro erro, acabou."
   },
   "status": {
     "watch": "Observe…",
@@ -55,6 +55,6 @@
     "keys": "No teclado: Q W A S ou 1 2 3 4"
   },
   "board": {
-    "label": "Simão diz: quatro botões coloridos"
+    "label": "Siga a luz: quatro botões coloridos"
   }
 }

@@ -1,11 +1,12 @@
 import { useSyncExternalStore } from 'react'
-import { DEFAULT_THEME, THEMES, THEME_STORAGE_KEY, isThemeId, type ThemeId } from './themes'
+import { DEFAULT_THEME, LEGACY_THEMES, THEMES, THEME_STORAGE_KEY, isThemeId, type ThemeId } from './themes'
 
 const listeners = new Set<() => void>()
 
 function read(): ThemeId {
   try {
-    const stored = localStorage.getItem(THEME_STORAGE_KEY)
+    const raw = localStorage.getItem(THEME_STORAGE_KEY)
+    const stored = raw ? (LEGACY_THEMES[raw] ?? raw) : raw
     return isThemeId(stored) ? stored : DEFAULT_THEME
   } catch {
     return DEFAULT_THEME
