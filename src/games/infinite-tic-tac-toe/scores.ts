@@ -2,11 +2,16 @@ import { useEffect } from 'react'
 import { useGameScores } from '@core/scores'
 import type { Player } from './logic'
 import { GAME_ID } from './meta'
+import { nextStreak, type CpuOutcome } from './streak'
 
 export type Mode = 'pvp' | 'cpu'
 
 /** Clave del contador de victorias: "pvp:X", "cpu:O"… */
 export const winsKey = (mode: Mode, player: Player) => `${mode}:${player}`
+
+/** Racha actual (contador) y mejor racha (récord, se ve en la portada). */
+export const STREAK_KEY = 'streak'
+export const STREAK_BEST_MODE = 'cpu-streak'
 
 /** Puntos del tres en raya, ya ligados a su id en el store compartido. */
 export function useTicTacToeScores(mode: Mode) {
@@ -21,7 +26,16 @@ export function useTicTacToeScores(mode: Mode) {
   return {
     wins,
     addWin: (player: Player) => scores.increment(winsKey(mode, player)),
+    /** Resetea las victorias del modo. Las rachas no se tocan. */
     resetWins: () => scores.resetCounters(`${mode}:`),
+    streak: scores.counters[STREAK_KEY] ?? 0,
+    bestStreak: scores.best[STREAK_BEST_MODE] ?? 0,
+    /** Registra el resultado contra la CPU. Devuelve true si es nueva mejor racha. */
+    recordCpuResult: (outcome: CpuOutcome): boolean => {
+      const next = nextStreak(scores.getCounter(STREAK_KEY), outcome)
+      scores.setCounter(STREAK_KEY, next)
+      return outcome === 'win' && scores.recordBest(next, STREAK_BEST_MODE).isRecord
+    },
   }
 }
 

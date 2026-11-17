@@ -6,7 +6,7 @@ Baúl de minijuegos para el móvil, en español, inglés y portugués. PWA hecha
 
 | Juego | Descripción |
 | --- | --- |
-| **Tres en raya infinito** | Cada jugador solo puede tener 3 fichas. Al colocar la cuarta, desaparece la más antigua. Modo 2 jugadores y contra CPU. |
+| **Tres en raya infinito** | Cada jugador solo puede tener 3 fichas. Al colocar la cuarta, desaparece la más antigua. Modo 2 jugadores y contra CPU, con **racha invicto** contra la CPU (abandonar una partida empezada la rompe). |
 | **Snake** | El clásico de los Nokia con D-pad, gestos y teclado. Modo **Clásico** (las paredes matan, niveles 1–9: más nivel, más puntos) y **Sin paredes** (atraviesas los bordes y la velocidad sube sola). Récord por modo. |
 
 ## Desarrollo

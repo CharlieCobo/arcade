@@ -15,7 +15,7 @@ const DIRECTIONS: Direction[] = ['up', 'left', 'right', 'down']
 
 function Arrow({ dir }: { dir: Direction }) {
   return (
-    <svg width="26" height="26" viewBox="0 0 24 24" style={{ transform: `rotate(${ROTATION[dir]}deg)` }} aria-hidden="true">
+    <svg width="34" height="34" viewBox="0 0 24 24" style={{ transform: `rotate(${ROTATION[dir]}deg)` }} aria-hidden="true">
       <path d="M12 6 L19 15 L5 15 Z" fill="currentColor" />
     </svg>
   )
@@ -23,12 +23,12 @@ function Arrow({ dir }: { dir: Direction }) {
 
 function CenterIcon({ icon }: { icon: Props['centerIcon'] }) {
   return icon === 'pause' ? (
-    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
       <rect x="6" y="5" width="4" height="14" rx="1.5" fill="currentColor" />
       <rect x="14" y="5" width="4" height="14" rx="1.5" fill="currentColor" />
     </svg>
   ) : (
-    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M8 5 L19 12 L8 19 Z" fill="currentColor" />
     </svg>
   )

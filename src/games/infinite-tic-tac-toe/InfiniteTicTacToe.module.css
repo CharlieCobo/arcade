@@ -216,3 +216,41 @@
 .rules strong {
   color: var(--text);
 }
+
+/* Racha contra la CPU */
+.streak {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.streak.hot {
+  border-color: color-mix(in srgb, var(--x) 45%, transparent);
+}
+.streakCurrent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.streakValue {
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+  animation: pop 0.25s ease-out;
+}
+.streakBest {
+  color: var(--muted);
+  font-size: 13px;
+}
+.newBest {
+  color: var(--x);
+  font-size: 13px;
+  font-weight: 700;
+  animation: pop 0.4s ease-out;
+}

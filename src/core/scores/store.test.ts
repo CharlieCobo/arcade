@@ -40,7 +40,22 @@ describe('submitScore', () => {
   })
 })
 
+describe('recordBest', () => {
+  it('actualiza el récord sin tocar el historial', () => {
+    expect(store().recordBest('ttt', 3, 'cpu-streak')).toEqual({ isRecord: true, previousBest: 0 })
+    expect(store().recordBest('ttt', 2, 'cpu-streak').isRecord).toBe(false)
+    expect(store().games.ttt?.best['cpu-streak']).toBe(3)
+    expect(store().games.ttt?.history).toEqual([])
+  })
+})
+
 describe('contadores', () => {
+  it('setCounter fija un valor', () => {
+    store().increment('ttt', 'streak', 4)
+    store().setCounter('ttt', 'streak', 0)
+    expect(store().games.ttt?.counters.streak).toBe(0)
+  })
+
   it('incrementa y resetea por prefijo', () => {
     store().increment('ttt', 'pvp:X')
     store().increment('ttt', 'pvp:X')
