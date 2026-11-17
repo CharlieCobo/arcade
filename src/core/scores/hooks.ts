@@ -3,7 +3,11 @@ import { DEFAULT_MODE, EMPTY_SCORES, useScoresStore, type GameScores } from './s
 
 export interface GameScoresApi extends GameScores {
   submitScore: (score: number, mode?: string) => ReturnType<ReturnType<typeof useScoresStore.getState>['submitScore']>
+  recordBest: (score: number, mode?: string) => ReturnType<GameScoresApi['submitScore']>
   increment: (key: string, by?: number) => void
+  setCounter: (key: string, value: number) => void
+  /** Lee el valor actual de un contador directamente del store (sin esperar al render). */
+  getCounter: (key: string) => number
   resetCounters: (prefix?: string) => void
   reset: () => void
 }
@@ -19,7 +23,10 @@ export function useGameScores(gameId: string): GameScoresApi {
     const store = () => useScoresStore.getState()
     return {
       submitScore: (score: number, mode: string = DEFAULT_MODE) => store().submitScore(gameId, score, mode),
+      recordBest: (score: number, mode: string = DEFAULT_MODE) => store().recordBest(gameId, score, mode),
       increment: (key: string, by?: number) => store().increment(gameId, key, by),
+      setCounter: (key: string, value: number) => store().setCounter(gameId, key, value),
+      getCounter: (key: string) => store().games[gameId]?.counters[key] ?? 0,
       resetCounters: (prefix?: string) => store().resetCounters(gameId, prefix),
       reset: () => store().resetGame(gameId),
     }

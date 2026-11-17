@@ -2,7 +2,10 @@
   "meta": {
     "title": "Tres en raya infinito",
     "description": "Solo 3 fichas por jugador: al poner la cuarta, desaparece la más antigua.",
-    "tags": ["2 jugadores", "vs CPU"]
+    "tags": [
+      "2 jugadores",
+      "vs CPU"
+    ]
   },
   "modes": {
     "label": "Modo de juego",
@@ -29,5 +32,11 @@
     "newRound": "Nueva ronda",
     "resetScore": "Reiniciar marcador"
   },
-  "rules": "<strong>Reglas:</strong> cada jugador solo puede tener {{max}} fichas en el tablero. Al colocar la cuarta, desaparece tu ficha más antigua (la que parpadea). Gana quien haga tres en raya."
+  "rules": "<strong>Reglas:</strong> cada jugador solo puede tener {{max}} fichas en el tablero. Al colocar la cuarta, desaparece tu ficha más antigua (la que parpadea). Gana quien haga tres en raya.",
+  "streak": {
+    "current": "Racha invicto",
+    "best": "Mejor: {{count}}",
+    "newBest": "¡Nueva mejor racha!",
+    "rules": "<strong>Racha:</strong> cada victoria seguida contra la CPU suma 1. Si pierdes o abandonas una partida empezada, vuelve a 0."
+  }
 }

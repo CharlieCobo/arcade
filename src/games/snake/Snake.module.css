@@ -5,7 +5,7 @@
   user-select: none;
   -webkit-user-select: none;
   /* Tamaño de cada botón del D-pad: más pequeño en pantallas bajas */
-  --dpad: clamp(46px, 7.6dvh, 60px);
+  --dpad: clamp(60px, 10.2dvh, 82px);
 }
 
 /* Marcador */
@@ -34,9 +34,9 @@
 
 /* Tablero: cuadrado y tan grande como permita la pantalla sin hacer scroll */
 .board {
-  --chrome: calc(250px + 3 * var(--dpad) + env(safe-area-inset-top) + env(safe-area-inset-bottom));
+  --chrome: calc(244px + 3 * var(--dpad) + env(safe-area-inset-top) + env(safe-area-inset-bottom));
   position: relative;
-  width: min(100%, max(240px, calc(100dvh - var(--chrome))));
+  width: min(100%, max(220px, calc(100dvh - var(--chrome))));
   aspect-ratio: 1;
   margin: 0 auto;
   border-radius: var(--radius-lg);
@@ -164,7 +164,7 @@
     '.    up     .'
     'left center right'
     '.    down   .';
-  gap: 6px;
+  gap: 8px;
   margin: 0 auto;
   touch-action: none;
 }
@@ -203,7 +203,7 @@
   border-radius: 50%;
   background: var(--cell);
   color: var(--muted);
-  margin: 8px;
+  margin: 12%;
 }
 
 @keyframes fade {

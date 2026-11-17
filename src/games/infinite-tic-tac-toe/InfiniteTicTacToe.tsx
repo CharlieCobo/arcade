@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
 import { vibrate } from '@core/lib/haptics'
 import { useLocalStorage } from '@core/lib/useLocalStorage'
 import { Board } from './components/Board'
 import { PlayerCard } from './components/PlayerCard'
+import { StreakBar } from './components/StreakBar'
 import { useTicTacToeScores, type Mode } from './scores'
 import {
   MAX_PIECES,
@@ -14,6 +15,7 @@ import {
   other,
   type Player,
 } from './logic'
+import { isRoundInProgress } from './streak'
 import styles from './InfiniteTicTacToe.module.css'
 
 const PLAYERS: Player[] = ['X', 'O']
@@ -24,9 +26,37 @@ const NS = 'infinite-tic-tac-toe'
 export default function InfiniteTicTacToe() {
   const { t } = useTranslation(NS)
   const [mode, setMode] = useLocalStorage<Mode>('ittt:mode', 'pvp')
-  const { wins, addWin, resetWins } = useTicTacToeScores(mode)
+  const { wins, addWin, resetWins, streak, bestStreak, recordCpuResult } = useTicTacToeScores(mode)
   const [starter, setStarter] = useState<Player>('X')
   const [game, setGame] = useState(() => initialState('X'))
+  const [newBestStreak, setNewBestStreak] = useState(false)
+
+  /** Abandonar una partida empezada contra la CPU rompe la racha. */
+  const abandonIfInProgress = () => {
+    if (mode === 'cpu' && isRoundInProgress(game)) recordCpuResult('loss')
+    setNewBestStreak(false)
+  }
+
+  // También si sales de la pantalla o cierras/recargas la app a mitad de partida.
+  const latest = useRef({ mode, game, recordCpuResult })
+  useEffect(() => {
+    latest.current = { mode, game, recordCpuResult }
+  })
+  useEffect(() => {
+    const ref = latest
+    const onLeave = () => {
+      const { mode, game, recordCpuResult } = ref.current
+      if (mode === 'cpu' && isRoundInProgress(game)) {
+        recordCpuResult('loss')
+        ref.current = { ...ref.current, game: initialState() } // no contarlo dos veces
+      }
+    }
+    window.addEventListener('pagehide', onLeave)
+    return () => {
+      window.removeEventListener('pagehide', onLeave)
+      onLeave()
+    }
+  }, [])
 
   const cpuTurn = mode === 'cpu' && game.turn === 'O' && !game.winner
   const fadingIdx = nextToVanish(game)
@@ -41,6 +71,7 @@ export default function InfiniteTicTacToe() {
     setGame(next)
     if (next.winner) {
       addWin(next.winner)
+      if (mode === 'cpu') setNewBestStreak(recordCpuResult(next.winner === 'X' ? 'win' : 'loss'))
       vibrate([30, 40, 60])
     } else {
       vibrate(12)
@@ -59,12 +90,14 @@ export default function InfiniteTicTacToe() {
   }, [game, cpuTurn])
 
   const newRound = () => {
+    abandonIfInProgress()
     const s = other(starter) // alterna quién empieza
     setStarter(s)
     setGame(initialState(s))
   }
 
   const restart = () => {
+    abandonIfInProgress()
     setStarter('X')
     setGame(initialState('X'))
   }
@@ -107,6 +140,8 @@ export default function InfiniteTicTacToe() {
         ))}
       </div>
 
+      {mode === 'cpu' && <StreakBar streak={streak} best={bestStreak} isNewBest={newBestStreak} />}
+
       <div className={styles.status} aria-live="polite">
         {cpuTurn ? (
           t('status.cpuThinking')
@@ -139,6 +174,12 @@ export default function InfiniteTicTacToe() {
 
       <p className={styles.rules}>
         <Trans t={t} i18nKey="rules" values={{ max: MAX_PIECES }} components={{ strong: <strong /> }} />
+        {mode === 'cpu' && (
+          <>
+            <br />
+            <Trans t={t} i18nKey="streak.rules" components={{ strong: <strong /> }} />
+          </>
+        )}
       </p>
     </div>
   )

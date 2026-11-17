@@ -29,8 +29,12 @@ export interface SubmitResult {
 
 interface ScoresState {
   games: Record<string, GameScores>
+  /** Guarda una partida en el historial y actualiza el récord del modo si lo supera. */
   submitScore: (gameId: string, score: number, mode?: string) => SubmitResult
+  /** Actualiza el récord del modo si lo supera, sin añadir nada al historial (p. ej. rachas). */
+  recordBest: (gameId: string, score: number, mode?: string) => SubmitResult
   increment: (gameId: string, key: string, by?: number) => void
+  setCounter: (gameId: string, key: string, value: number) => void
   /** Pone a cero los contadores del juego (solo los que empiezan por `prefix`, si se indica). */
   resetCounters: (gameId: string, prefix?: string) => void
   /** Borra todos los puntos de un juego. */
@@ -54,15 +58,20 @@ export const useScoresStore = create<ScoresState>()(
       return {
         games: {},
 
-        submitScore: (gameId, score, mode = DEFAULT_MODE) => {
+        recordBest: (gameId, score, mode = DEFAULT_MODE) => {
           const previousBest = get().games[gameId]?.best[mode] ?? 0
           const isRecord = score > previousBest
+          if (isRecord) update(gameId, (g) => ({ ...g, best: { ...g.best, [mode]: score } }))
+          return { isRecord, previousBest }
+        },
+
+        submitScore: (gameId, score, mode = DEFAULT_MODE) => {
+          const result = get().recordBest(gameId, score, mode)
           update(gameId, (g) => ({
             ...g,
-            best: isRecord ? { ...g.best, [mode]: score } : g.best,
             history: [{ score, mode, at: Date.now() }, ...g.history].slice(0, HISTORY_LIMIT),
           }))
-          return { isRecord, previousBest }
+          return result
         },
 
         increment: (gameId, key, by = 1) =>
@@ -70,6 +79,9 @@ export const useScoresStore = create<ScoresState>()(
             ...g,
             counters: { ...g.counters, [key]: (g.counters[key] ?? 0) + by },
           })),
+
+        setCounter: (gameId, key, value) =>
+          update(gameId, (g) => ({ ...g, counters: { ...g.counters, [key]: value } })),
 
         resetCounters: (gameId, prefix) =>
           update(gameId, (g) => ({
