@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "title": "Brick Bash",
+    "description": "Quebre todos os tijolos com a bola. Power-ups, combos e 8 níveis.",
+    "tags": [
+      "1 jogador",
+      "Power-ups"
+    ]
+  },
+  "difficulty": {
+    "label": "Dificuldade",
+    "easy": "Fácil",
+    "normal": "Normal",
+    "hard": "Difícil",
+    "easyHint": "5 vidas, raquete larga e mais power-ups.",
+    "normalHint": "3 vidas. O equilíbrio clássico.",
+    "hardHint": "2 vidas, bola rápida, raquete estreita e menos ajuda."
+  },
+  "hud": {
+    "score": "Pontos",
+    "level": "Nível",
+    "lives": "Vidas",
+    "best": "Recorde"
+  },
+  "powers": {
+    "expand": "Alargar",
+    "laser": "Laser",
+    "catch": "Ímã",
+    "slow": "Lento",
+    "multi": "Multibola",
+    "life": "Vida extra"
+  },
+  "levels": {
+    "warmup": "Aquecimento",
+    "pyramid": "Pirâmide",
+    "checkers": "Xadrez",
+    "fortress": "Fortaleza",
+    "heart": "Coração",
+    "invader": "Invasor",
+    "wall": "Muralha",
+    "maze": "Labirinto"
+  },
+  "screens": {
+    "play": "Jogar",
+    "paused": "Pausa",
+    "resume": "Continuar",
+    "endGame": "Encerrar partida",
+    "over": "Fim de jogo",
+    "newRecord": "Novo recorde!",
+    "points_one": "{{count}} ponto",
+    "points_other": "{{count}} pontos",
+    "reached": "Você chegou ao nível {{level}}",
+    "playAgain": "Jogar de novo",
+    "changeDifficulty": "Mudar dificuldade",
+    "cleared": "Nível concluído!",
+    "bonus": "+{{points}} de bônus",
+    "next": "Nível {{level}} · {{name}}",
+    "continue": "Continuar",
+    "launch": "Toque para lançar",
+    "powersTitle": "Power-ups"
+  },
+  "control": {
+    "label": "Área de controle",
+    "hint": "Deslize para mover · toque para lançar ou atirar",
+    "pause": "Pausar"
+  },
+  "board": {
+    "label": "Tabuleiro do Brick Bash"
+  },
+  "combo": "Combo ×{{n}}"
+}
