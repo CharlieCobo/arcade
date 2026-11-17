@@ -91,6 +91,6 @@ Para añadir un idioma: añádelo a `src/core/i18n/languages.ts` y crea sus JSON
 
 ## Despliegue
 
-El workflow `.github/workflows/deploy.yml` publica en GitHub Pages en cada push a `main`. Hay que activarlo una vez en **Settings → Pages → Source: GitHub Actions**.
+El workflow `.github/workflows/deploy.yml` publica en GitHub Pages en cada push a `main`: https://charliecobo.github.io/baulix/ (la ruta sale del nombre del repo). Hay que activarlo una vez en **Settings → Pages → Source: GitHub Actions**.
 
 La app usa `HashRouter`, así que no hace falta configurar redirecciones en Pages. Los iconos de la PWA se generan desde `public/logo.svg` con `npm run generate-pwa-assets`.

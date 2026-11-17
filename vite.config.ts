@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url'
 
 const src = (p: string) => fileURLToPath(new URL(`./src/${p}`, import.meta.url))
 
-// En GitHub Pages la app vive en /arcade/. En local, en la raíz.
+// En GitHub Pages la app vive en /<nombre del repo>/ (hoy /baulix/). En local, en la raíz.
 const base = process.env.BASE_PATH ?? '/'
 
 export default defineConfig({
