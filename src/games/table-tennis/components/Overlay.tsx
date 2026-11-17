@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { TARGETS, type CpuLevel, type Mode, type Side } from '../logic'
-import type { Phase } from '../usePingPong'
-import styles from '../PingPong.module.css'
+import type { Phase } from '../useTableTennis'
+import styles from '../TableTennis.module.css'
 
 interface Props {
   phase: Phase
@@ -25,7 +25,7 @@ interface Props {
 const LEVELS: CpuLevel[] = ['easy', 'normal', 'hard']
 
 export function Overlay(p: Props) {
-  const { t } = useTranslation('ping-pong')
+  const { t } = useTranslation('table-tennis')
   if (p.phase === 'playing') return null
 
   const names: Record<Side, string> = {

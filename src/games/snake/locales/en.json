@@ -1,8 +1,11 @@
 {
   "meta": {
     "title": "Snake",
-    "description": "The Nokia classic: eat, grow and don't bite your own tail.",
-    "tags": ["1 player", "Classic"]
+    "description": "The old-school phone classic: eat, grow and don't bite your own tail.",
+    "tags": [
+      "1 player",
+      "Classic"
+    ]
   },
   "modes": {
     "label": "Game mode",

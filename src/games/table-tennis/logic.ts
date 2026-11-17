@@ -1,5 +1,5 @@
 /**
- * Lógica pura de Ping Pong en vertical: un jugador abajo y otro arriba.
+ * Lógica pura de tenis de mesa en vertical: un jugador abajo y otro arriba.
  * Coordenadas lógicas fijas (FIELD_W × FIELD_H); la interfaz las escala.
  * La física avanza en pasos fijos y la aleatoriedad (`rng`) se inyecta.
  */

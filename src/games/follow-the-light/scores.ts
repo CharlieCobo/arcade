@@ -3,7 +3,7 @@ import type { Difficulty, Mode } from './logic'
 import { GAME_ID } from './meta'
 
 /** Récord por modo: rondas completadas. */
-export function useSimonScores(mode: Mode) {
+export function useFollowTheLightScores(mode: Mode) {
   const scores = useGameScores(GAME_ID)
   return {
     best: scores.best[mode] ?? 0,

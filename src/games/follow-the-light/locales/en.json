@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Simon Says",
+    "title": "Follow the Light",
     "description": "Memorize and repeat the sequence of lights and sounds. One more step every round.",
     "tags": [
       "1 player",
@@ -19,7 +19,7 @@
     "relaxed": "Relaxed",
     "strict": "Strict",
     "relaxedHint": "3 lives: if you slip, the sequence plays again.",
-    "strictHint": "Like the original: one mistake and it's over."
+    "strictHint": "No second chances: one mistake and it's over."
   },
   "status": {
     "watch": "Watch…",
@@ -55,6 +55,6 @@
     "keys": "Keyboard: Q W A S or 1 2 3 4"
   },
   "board": {
-    "label": "Simon Says: four colored buttons"
+    "label": "Follow the Light: four colored buttons"
   }
 }

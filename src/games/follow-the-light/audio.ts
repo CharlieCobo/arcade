@@ -1,7 +1,7 @@
 import type { Pad } from './logic'
 
 /**
- * Tonos del Simón original, generados con Web Audio (sin archivos de sonido).
+ * Tonos de las cuatro luces, generados con Web Audio (sin archivos de sonido).
  * El navegador solo deja sonar audio tras una interacción: llamamos a
  * unlockAudio() al pulsar "Jugar".
  */

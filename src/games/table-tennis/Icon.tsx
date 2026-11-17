@@ -1,5 +1,5 @@
 /** Mesa vertical: pala arriba, red, bola y pala abajo. */
-export function PingPongIcon({ size = 56 }: { size?: number }) {
+export function TableTennisIcon({ size = 56 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden="true">
       <rect x={20} y={8} width={24} height={5} rx={2.5} fill="var(--o)" />

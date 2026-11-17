@@ -12,6 +12,7 @@
       // Aplica el tema guardado antes de pintar, para que no parpadee
       try {
         var t = localStorage.getItem('arcade:theme')
+        if (t === 'cyberpunk') t = 'neon'
         if (t) document.documentElement.dataset.theme = t
       } catch (e) {}
     </script>

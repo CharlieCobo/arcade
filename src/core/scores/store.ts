@@ -52,7 +52,27 @@ export const EMPTY_SCORES: GameScores = Object.freeze({
   history: [],
 }) as GameScores
 
-const STORE_VERSION = 1
+const STORE_VERSION = 2
+
+/** Juegos que cambiaron de id: sus récords se mueven al id nuevo. */
+export const RENAMED_GAMES: Record<string, string> = {
+  simon: 'follow-the-light',
+  'ping-pong': 'table-tennis',
+}
+
+/** Mueve los puntos guardados con ids antiguos a los nuevos. */
+export function migrateScores(persisted: unknown, version: number): { games: Record<string, GameScores> } {
+  const state = (persisted ?? {}) as { games?: Record<string, GameScores> }
+  const games = { ...(state.games ?? {}) }
+  if (version < 2) {
+    for (const [from, to] of Object.entries(RENAMED_GAMES)) {
+      const old = games[from]
+      if (old && !games[to]) games[to] = old
+      delete games[from]
+    }
+  }
+  return { ...state, games }
+}
 
 export const useScoresStore = create<ScoresState>()(
   persist(
@@ -111,7 +131,7 @@ export const useScoresStore = create<ScoresState>()(
       storage: createJSONStorage(() => scoresStorage),
       partialize: (s) => ({ games: s.games }),
       // Cuando cambie el formato: sube STORE_VERSION y transforma aquí los datos antiguos.
-      migrate: (persisted) => persisted as { games: Record<string, GameScores> },
+      migrate: (persisted, version) => migrateScores(persisted, version),
     },
   ),
 )

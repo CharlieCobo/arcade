@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Ping Pong",
-    "description": "Tenis de mesa en vertical: contra un amigo en el mismo móvil o contra la CPU.",
+    "title": "Tenis de mesa",
+    "description": "En vertical: contra un amigo en el mismo móvil o contra la CPU.",
     "tags": [
       "2 jugadores",
       "vs CPU"
@@ -49,6 +49,6 @@
     "pause": "Pausar"
   },
   "board": {
-    "label": "Mesa de ping pong"
+    "label": "Mesa de tenis de mesa"
   }
 }

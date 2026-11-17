@@ -1,16 +1,16 @@
 /**
- * Lógica pura de Simón dice. Sin React ni audio.
+ * Lógica pura de Sigue la luz. Sin React ni audio.
  * Cada ronda la secuencia crece un paso; el jugador la repite (o al revés).
  */
 
 export type Pad = 0 | 1 | 2 | 3
 export type Mode = 'classic' | 'reverse'
 export type Difficulty = 'relaxed' | 'strict'
-/** showing: Simón enseña la secuencia · input: turno del jugador */
+/** showing: el juego enseña la secuencia · input: turno del jugador */
 export type Status = 'showing' | 'input' | 'over'
 export type Rng = () => number
 
-export interface SimonState {
+export interface LightState {
   sequence: Pad[]
   /** Cuántos pasos de la ronda actual ha acertado ya el jugador */
   input: number
@@ -28,7 +28,7 @@ export const LIVES: Record<Difficulty, number> = { relaxed: 3, strict: 1 }
 
 const randomPad = (rng: Rng): Pad => Math.min(3, Math.floor(rng() * 4)) as Pad
 
-export function createGame(opts: { mode?: Mode; difficulty?: Difficulty } = {}, rng: Rng = Math.random): SimonState {
+export function createGame(opts: { mode?: Mode; difficulty?: Difficulty } = {}, rng: Rng = Math.random): LightState {
   const difficulty = opts.difficulty ?? 'strict'
   return {
     sequence: [randomPad(rng)],
@@ -40,16 +40,16 @@ export function createGame(opts: { mode?: Mode; difficulty?: Difficulty } = {}, 
   }
 }
 
-/** Simón ha terminado de enseñar la secuencia: le toca al jugador. */
-export const finishShowing = (s: SimonState): SimonState => (s.status === 'showing' ? { ...s, status: 'input', input: 0 } : s)
+/** El juego ha terminado de enseñar la secuencia: le toca al jugador. */
+export const finishShowing = (s: LightState): LightState => (s.status === 'showing' ? { ...s, status: 'input', input: 0 } : s)
 
 /** El botón que toca pulsar ahora. */
-export function expected(s: SimonState): Pad {
+export function expected(s: LightState): Pad {
   const i = s.mode === 'classic' ? s.input : s.sequence.length - 1 - s.input
   return s.sequence[i]!
 }
 
-export function press(s: SimonState, pad: Pad, rng: Rng = Math.random): { state: SimonState; result: PressResult } {
+export function press(s: LightState, pad: Pad, rng: Rng = Math.random): { state: LightState; result: PressResult } {
   if (s.status !== 'input') return { state: s, result: 'ignored' }
 
   if (pad !== expected(s)) {
@@ -70,10 +70,10 @@ export function press(s: SimonState, pad: Pad, rng: Rng = Math.random): { state:
 }
 
 /** Rondas completadas (la puntuación). */
-export const roundsCompleted = (s: SimonState) => s.sequence.length - 1
+export const roundsCompleted = (s: LightState) => s.sequence.length - 1
 
 /** Ronda actual, empezando en 1. */
-export const currentRound = (s: SimonState) => s.sequence.length
+export const currentRound = (s: LightState) => s.sequence.length
 
 /**
  * Cuánto se ilumina cada paso al enseñar la secuencia (ms).

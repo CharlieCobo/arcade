@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Ping Pong",
-    "description": "Vertical table tennis: play a friend on the same phone or take on the CPU.",
+    "title": "Table Tennis",
+    "description": "Vertical play: take on a friend on the same phone or the CPU.",
     "tags": [
       "2 players",
       "vs CPU"
@@ -49,6 +49,6 @@
     "pause": "Pause"
   },
   "board": {
-    "label": "Ping pong table"
+    "label": "Table tennis table"
   }
 }

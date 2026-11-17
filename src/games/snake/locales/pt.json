@@ -1,8 +1,11 @@
 {
   "meta": {
     "title": "Snake",
-    "description": "O clássico dos Nokia: coma, cresça e não morda o próprio rabo.",
-    "tags": ["1 jogador", "Clássico"]
+    "description": "O clássico dos celulares antigos: coma, cresça e não morda o próprio rabo.",
+    "tags": [
+      "1 jogador",
+      "Clássico"
+    ]
   },
   "modes": {
     "label": "Modo de jogo",

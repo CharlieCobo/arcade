@@ -1,4 +1,4 @@
-/** Serpiente pixelada, como en la pantalla de un Nokia. */
+/** Serpiente pixelada, como en las pantallas de los móviles de antes. */
 export function SnakeIcon({ size = 56 }: { size?: number }) {
   const px = (x: number, y: number, opacity = 1) => (
     <rect key={`${x}-${y}`} x={x * 9 + 6} y={y * 9 + 6} width={7.5} height={7.5} rx={2} fill="var(--o)" opacity={opacity} />

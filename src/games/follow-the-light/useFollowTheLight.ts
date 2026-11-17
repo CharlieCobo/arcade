@@ -10,7 +10,7 @@ import {
   type Mode,
   type Pad,
   type PressResult,
-  type SimonState,
+  type LightState,
 } from './logic'
 
 export type Phase = 'ready' | 'playing' | 'over'
@@ -27,16 +27,16 @@ interface Options {
   difficulty: Difficulty
   sound: boolean
   onPress?: (result: PressResult) => void
-  onEnd: (state: SimonState) => void
+  onEnd: (state: LightState) => void
 }
 
 /**
- * Turnos de Simón: enseña la secuencia con luces y sonido (temporizadores)
+ * Turnos del juego: enseña la secuencia con luces y sonido (temporizadores)
  * y luego espera a que el jugador la repita.
  */
-export function useSimon({ mode, difficulty, sound, onPress, onEnd }: Options) {
+export function useFollowTheLight({ mode, difficulty, sound, onPress, onEnd }: Options) {
   const [phase, setPhase] = useState<Phase>('ready')
-  const [game, setGame] = useState<SimonState>(() => createGame({ mode, difficulty }))
+  const [game, setGame] = useState<LightState>(() => createGame({ mode, difficulty }))
   const [lit, setLit] = useState<Pad | null>(null)
   const [message, setMessage] = useState<Message>(null)
   const timers = useRef<number[]>([])
@@ -62,11 +62,11 @@ export function useSimon({ mode, difficulty, sound, onPress, onEnd }: Options) {
     later(() => setLit((p) => (p === pad ? null : p)), ms)
   }
 
-  // Simón enseña la secuencia
+  // El juego enseña la secuencia
   useEffect(() => {
     if (phase !== 'playing' || game.status !== 'showing') return
     clearTimers()
-    // Apaga la luz de la última pulsación del jugador antes de que Simón enseñe la
+    // Apaga la luz de la última pulsación del jugador antes de que el juego enseñe la
     // nueva secuencia (si no, un primer paso del mismo color no se distinguiría)
     later(() => setLit(null), PRESS_LIGHT_MS)
     const n = game.sequence.length

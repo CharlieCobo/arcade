@@ -1,8 +1,11 @@
 {
   "meta": {
     "title": "Snake",
-    "description": "El clásico de los Nokia: come, crece y no te muerdas la cola.",
-    "tags": ["1 jugador", "Clásico"]
+    "description": "El clásico de los móviles de antes: come, crece y no te muerdas la cola.",
+    "tags": [
+      "1 jugador",
+      "Clásico"
+    ]
   },
   "modes": {
     "label": "Modo de juego",

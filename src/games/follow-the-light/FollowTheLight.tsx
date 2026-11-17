@@ -4,25 +4,25 @@ import { vibrate } from '@core/lib/haptics'
 import { useLocalStorage } from '@core/lib/useLocalStorage'
 import { PAD_COLORS, PAD_KEYS } from './colors'
 import { LIVES, PADS, currentRound, roundsCompleted, type Difficulty, type Mode, type Pad } from './logic'
-import { useSimonScores } from './scores'
-import { MILESTONE_EVERY, useSimon } from './useSimon'
-import styles from './Simon.module.css'
+import { useFollowTheLightScores } from './scores'
+import { MILESTONE_EVERY, useFollowTheLight } from './useFollowTheLight'
+import styles from './FollowTheLight.module.css'
 
 const KEYS: Record<string, Pad> = { q: 0, w: 1, a: 2, s: 3, '1': 0, '2': 1, '3': 2, '4': 3 }
 const MODES: Mode[] = ['classic', 'reverse']
 const DIFFICULTIES: Difficulty[] = ['relaxed', 'strict']
 
-export default function Simon() {
-  const { t } = useTranslation('simon')
-  const [storedMode, setMode] = useLocalStorage<Mode>('simon:mode', 'classic')
-  const [storedDifficulty, setDifficulty] = useLocalStorage<Difficulty>('simon:difficulty', 'strict')
-  const [sound, setSound] = useLocalStorage<boolean>('simon:sound', true)
+export default function FollowTheLight() {
+  const { t } = useTranslation('follow-the-light')
+  const [storedMode, setMode] = useLocalStorage<Mode>('follow-the-light:mode', 'classic')
+  const [storedDifficulty, setDifficulty] = useLocalStorage<Difficulty>('follow-the-light:difficulty', 'strict')
+  const [sound, setSound] = useLocalStorage<boolean>('follow-the-light:sound', true)
   const mode = MODES.includes(storedMode) ? storedMode : 'classic'
   const difficulty = DIFFICULTIES.includes(storedDifficulty) ? storedDifficulty : 'strict'
-  const { best, submit } = useSimonScores(mode)
+  const { best, submit } = useFollowTheLightScores(mode)
   const [result, setResult] = useState<{ rounds: number; isRecord: boolean } | null>(null)
 
-  const simon = useSimon({
+  const followTheLight = useFollowTheLight({
     mode,
     difficulty,
     sound,
@@ -38,7 +38,7 @@ export default function Simon() {
       if (isRecord) vibrate([40, 60, 40, 60, 120])
     },
   })
-  const { phase, game, lit, message, start, toReady, pressPad } = simon
+  const { phase, game, lit, message, start, toReady, pressPad } = followTheLight
 
   const play = () => {
     setResult(null)
