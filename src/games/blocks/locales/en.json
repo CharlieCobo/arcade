@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "title": "Blocks",
+    "description": "Fit the pieces and clear lines. Every 10 lines, it gets faster.",
+    "tags": [
+      "1 player",
+      "Levels"
+    ]
+  },
+  "hud": {
+    "score": "Score",
+    "level": "Level",
+    "lines": "Lines",
+    "next": "Next",
+    "best": "Best"
+  },
+  "level": {
+    "label": "Starting level",
+    "hint": "It goes up every 10 lines. Pick it before you start: you can't change it during the game."
+  },
+  "screens": {
+    "play": "Play",
+    "paused": "Paused",
+    "resume": "Resume",
+    "endGame": "End game",
+    "over": "Game over",
+    "newRecord": "New record!",
+    "points_one": "{{count}} point",
+    "points_other": "{{count}} points",
+    "summary_one": "Level {{level}} · {{count}} line",
+    "summary_other": "Level {{level}} · {{count}} lines",
+    "playAgain": "Play again",
+    "changeLevel": "Change level",
+    "controls": "Tap the board to rotate, swipe to move and flick down to drop."
+  },
+  "controls": {
+    "group": "Controls",
+    "left": "Left",
+    "right": "Right",
+    "down": "Down",
+    "up": "Hard drop",
+    "rotateCw": "Rotate",
+    "rotateCcw": "Rotate back",
+    "pause": "Pause",
+    "resume": "Resume"
+  },
+  "board": {
+    "label": "Game board"
+  },
+  "levelUp": "Level {{level}}!"
+}

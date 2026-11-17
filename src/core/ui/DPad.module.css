@@ -1,0 +1,61 @@
+/* Cruceta compartida. El tamaño de cada botón se controla con --dpad desde el juego. */
+.dpad {
+  --size: var(--dpad, 64px);
+  display: grid;
+  grid-template-columns: repeat(3, var(--size));
+  grid-template-rows: repeat(3, var(--size));
+  grid-template-areas:
+    '.    up     .'
+    'left center right'
+    '.    down   .';
+  gap: 8px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.btn {
+  border: 0;
+  background: var(--panel);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  touch-action: none;
+  transition: background 0.08s, transform 0.08s;
+}
+.btn:active,
+.btn[data-pressed='true'] {
+  background: var(--cell-active);
+  transform: scale(0.94);
+}
+.up {
+  grid-area: up;
+  border-radius: 16px 16px 8px 8px;
+}
+.down {
+  grid-area: down;
+  border-radius: 8px 8px 16px 16px;
+}
+.left {
+  grid-area: left;
+  border-radius: 16px 8px 8px 16px;
+}
+.right {
+  grid-area: right;
+  border-radius: 8px 16px 16px 8px;
+}
+.center {
+  grid-area: center;
+  border-radius: 50%;
+  background: var(--cell);
+  color: var(--muted);
+  margin: 12%;
+}
+.arrow {
+  width: 42%;
+  height: 42%;
+}
+.centerIcon {
+  width: 45%;
+  height: 45%;
+}

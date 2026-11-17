@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "title": "Bloques",
+    "description": "Encaja las piezas y completa líneas. Cada 10 líneas, más rápido.",
+    "tags": [
+      "1 jugador",
+      "Niveles"
+    ]
+  },
+  "hud": {
+    "score": "Puntos",
+    "level": "Nivel",
+    "lines": "Líneas",
+    "next": "Siguiente",
+    "best": "Récord"
+  },
+  "level": {
+    "label": "Nivel inicial",
+    "hint": "Sube solo cada 10 líneas. Elígelo antes de empezar: durante la partida no se puede cambiar."
+  },
+  "screens": {
+    "play": "Jugar",
+    "paused": "Pausa",
+    "resume": "Continuar",
+    "endGame": "Terminar partida",
+    "over": "Fin de la partida",
+    "newRecord": "¡Nuevo récord!",
+    "points_one": "{{count}} punto",
+    "points_other": "{{count}} puntos",
+    "summary_one": "Nivel {{level}} · {{count}} línea",
+    "summary_other": "Nivel {{level}} · {{count}} líneas",
+    "playAgain": "Otra vez",
+    "changeLevel": "Cambiar nivel",
+    "controls": "Toca el tablero para girar, desliza para mover y desliza rápido hacia abajo para soltar."
+  },
+  "controls": {
+    "group": "Controles",
+    "left": "Izquierda",
+    "right": "Derecha",
+    "down": "Bajar",
+    "up": "Caída rápida",
+    "rotateCw": "Girar",
+    "rotateCcw": "Girar al revés",
+    "pause": "Pausar",
+    "resume": "Continuar"
+  },
+  "board": {
+    "label": "Tablero de juego"
+  },
+  "levelUp": "¡Nivel {{level}}!"
+}

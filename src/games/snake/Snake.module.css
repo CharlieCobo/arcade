@@ -155,55 +155,10 @@
   background: var(--panel);
 }
 
-/* D-pad tipo Nokia */
-.dpad {
-  display: grid;
-  grid-template-columns: repeat(3, var(--dpad));
-  grid-template-rows: repeat(3, var(--dpad));
-  grid-template-areas:
-    '.    up     .'
-    'left center right'
-    '.    down   .';
-  gap: 8px;
-  margin: 0 auto;
-  touch-action: none;
-}
-.dpadBtn {
-  border: 0;
-  background: var(--panel);
-  color: var(--text);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  touch-action: none;
-  transition: background 0.08s, transform 0.08s;
-}
-.dpadBtn:active {
-  background: var(--cell-active);
-  transform: scale(0.94);
-}
-.up {
-  grid-area: up;
-  border-radius: 16px 16px 8px 8px;
-}
-.down {
-  grid-area: down;
-  border-radius: 8px 8px 16px 16px;
-}
-.left {
-  grid-area: left;
-  border-radius: 16px 8px 8px 16px;
-}
-.right {
-  grid-area: right;
-  border-radius: 8px 16px 16px 8px;
-}
-.center {
-  grid-area: center;
-  border-radius: 50%;
-  background: var(--cell);
-  color: var(--muted);
-  margin: 12%;
+/* D-pad (componente compartido de @core/ui; aquí solo su tamaño, vía --dpad) */
+.controls {
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes fade {

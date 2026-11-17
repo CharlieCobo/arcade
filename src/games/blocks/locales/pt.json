@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "title": "Blocos",
+    "description": "Encaixe as peças e complete linhas. A cada 10 linhas, mais rápido.",
+    "tags": [
+      "1 jogador",
+      "Níveis"
+    ]
+  },
+  "hud": {
+    "score": "Pontos",
+    "level": "Nível",
+    "lines": "Linhas",
+    "next": "Próxima",
+    "best": "Recorde"
+  },
+  "level": {
+    "label": "Nível inicial",
+    "hint": "Sobe sozinho a cada 10 linhas. Escolha antes de começar: durante a partida não dá para mudar."
+  },
+  "screens": {
+    "play": "Jogar",
+    "paused": "Pausa",
+    "resume": "Continuar",
+    "endGame": "Encerrar partida",
+    "over": "Fim de jogo",
+    "newRecord": "Novo recorde!",
+    "points_one": "{{count}} ponto",
+    "points_other": "{{count}} pontos",
+    "summary_one": "Nível {{level}} · {{count}} linha",
+    "summary_other": "Nível {{level}} · {{count}} linhas",
+    "playAgain": "Jogar de novo",
+    "changeLevel": "Mudar nível",
+    "controls": "Toque no tabuleiro para girar, deslize para mover e deslize rápido para baixo para soltar."
+  },
+  "controls": {
+    "group": "Controles",
+    "left": "Esquerda",
+    "right": "Direita",
+    "down": "Descer",
+    "up": "Queda rápida",
+    "rotateCw": "Girar",
+    "rotateCcw": "Girar ao contrário",
+    "pause": "Pausar",
+    "resume": "Continuar"
+  },
+  "board": {
+    "label": "Tabuleiro do jogo"
+  },
+  "levelUp": "Nível {{level}}!"
+}

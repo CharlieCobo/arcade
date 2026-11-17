@@ -8,6 +8,7 @@ Baúl de minijuegos para el móvil, en español, inglés y portugués. PWA hecha
 | --- | --- |
 | **Tres en raya infinito** | Cada jugador solo puede tener 3 fichas. Al colocar la cuarta, desaparece la más antigua. Modo 2 jugadores y contra CPU, con **racha invicto** contra la CPU (abandonar una partida empezada la rompe). |
 | **Snake** | El clásico de los Nokia con D-pad, gestos y teclado. Modo **Clásico** (las paredes matan, niveles 1–9: más nivel, más puntos) y **Sin paredes** (atraviesas los bordes y la velocidad sube sola). Récord por modo. |
+| **Bloques** | Encaja piezas y completa líneas, con los colores clásicos de cada pieza. Eliges el nivel inicial (1–15) antes de empezar y sube solo cada 10 líneas. Rotación SRS, sombra de caída, vista previa de 3 piezas, cruceta + botones A/B, gestos y teclado. |
 
 ## Desarrollo
 
@@ -30,6 +31,7 @@ src/
   core/         # lo compartido: tipos de juego, store de puntos, utilidades, estilos
     game.ts       # contrato GameManifest + defineGame()
     scores/       # store de puntos (zustand + persist)
+    ui/           # componentes compartidos por los juegos (DPad con auto-repetición)
     i18n/  lib/  styles/
   games/
     index.ts      # registro del baúl
