@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Ping Pong",
+    "description": "Tenis de mesa en vertical: contra un amigo en el mismo móvil o contra la CPU.",
+    "tags": [
+      "2 jugadores",
+      "vs CPU"
+    ]
+  },
+  "modes": {
+    "label": "Modo de juego",
+    "pvp": "2 jugadores",
+    "cpu": "Contra CPU",
+    "pvpHint": "Cada uno mueve su pala deslizando el dedo en su mitad de la pantalla.",
+    "cpuHint": "Tú juegas abajo: desliza el dedo en cualquier parte para mover la pala."
+  },
+  "level": {
+    "label": "Dificultad",
+    "easy": "Fácil",
+    "normal": "Normal",
+    "hard": "Difícil"
+  },
+  "target": {
+    "label": "Partido a",
+    "points": "{{n}} puntos"
+  },
+  "players": {
+    "you": "Tú",
+    "p1": "Jugador 1",
+    "p2": "Jugador 2",
+    "cpu": "CPU"
+  },
+  "screens": {
+    "play": "Jugar",
+    "paused": "Pausa",
+    "resume": "Continuar",
+    "endGame": "Terminar partida",
+    "win": "¡Gana {{name}}!",
+    "youWin": "¡Has ganado!",
+    "youLose": "Has perdido",
+    "bestRally": "Rally más largo: {{n}}",
+    "newRecord": "¡Nuevo récord de rally!",
+    "record": "🏆 Récord de rally: {{n}}",
+    "playAgain": "Otra vez",
+    "changeMode": "Cambiar modo"
+  },
+  "hud": {
+    "rally": "Rally {{n}}",
+    "pause": "Pausar"
+  },
+  "board": {
+    "label": "Mesa de ping pong"
+  }
+}

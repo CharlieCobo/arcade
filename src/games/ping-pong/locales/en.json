@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Ping Pong",
+    "description": "Vertical table tennis: play a friend on the same phone or take on the CPU.",
+    "tags": [
+      "2 players",
+      "vs CPU"
+    ]
+  },
+  "modes": {
+    "label": "Game mode",
+    "pvp": "2 players",
+    "cpu": "vs CPU",
+    "pvpHint": "Each player moves their paddle by swiping on their half of the screen.",
+    "cpuHint": "You play at the bottom: swipe anywhere to move your paddle."
+  },
+  "level": {
+    "label": "Difficulty",
+    "easy": "Easy",
+    "normal": "Normal",
+    "hard": "Hard"
+  },
+  "target": {
+    "label": "Match to",
+    "points": "{{n}} points"
+  },
+  "players": {
+    "you": "You",
+    "p1": "Player 1",
+    "p2": "Player 2",
+    "cpu": "CPU"
+  },
+  "screens": {
+    "play": "Play",
+    "paused": "Paused",
+    "resume": "Resume",
+    "endGame": "End game",
+    "win": "{{name}} wins!",
+    "youWin": "You win!",
+    "youLose": "You lose",
+    "bestRally": "Longest rally: {{n}}",
+    "newRecord": "New rally record!",
+    "record": "🏆 Rally record: {{n}}",
+    "playAgain": "Play again",
+    "changeMode": "Change mode"
+  },
+  "hud": {
+    "rally": "Rally {{n}}",
+    "pause": "Pause"
+  },
+  "board": {
+    "label": "Ping pong table"
+  }
+}
