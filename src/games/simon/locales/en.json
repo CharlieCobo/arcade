@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Simon Says",
+    "description": "Memorize and repeat the sequence of lights and sounds. One more step every round.",
+    "tags": [
+      "1 player",
+      "Memory"
+    ]
+  },
+  "modes": {
+    "label": "Mode",
+    "classic": "Classic",
+    "reverse": "Reverse",
+    "classicHint": "Repeat the sequence in the same order.",
+    "reverseHint": "Repeat the sequence starting from the end."
+  },
+  "difficulty": {
+    "label": "Difficulty",
+    "relaxed": "Relaxed",
+    "strict": "Strict",
+    "relaxedHint": "3 lives: if you slip, the sequence plays again.",
+    "strictHint": "Like the original: one mistake and it's over."
+  },
+  "status": {
+    "watch": "Watch…",
+    "yourTurn": "Your turn!",
+    "reverseTurn": "In reverse!",
+    "wrong": "Oops!",
+    "great": "Nice!",
+    "milestone": "{{n}} rounds!"
+  },
+  "hud": {
+    "round": "Round",
+    "best": "Best",
+    "lives": "Lives",
+    "soundOn": "Turn sound on",
+    "soundOff": "Mute sound"
+  },
+  "pads": {
+    "green": "Green",
+    "red": "Red",
+    "yellow": "Yellow",
+    "blue": "Blue",
+    "label": "{{color}} button"
+  },
+  "screens": {
+    "play": "Play",
+    "over": "Game over",
+    "reached_one": "You completed {{count}} round",
+    "reached_other": "You completed {{count}} rounds",
+    "newRecord": "New record!",
+    "record": "🏆 Best: {{n}}",
+    "playAgain": "Play again",
+    "options": "Change mode",
+    "keys": "Keyboard: Q W A S or 1 2 3 4"
+  },
+  "board": {
+    "label": "Simon Says: four colored buttons"
+  }
+}

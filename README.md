@@ -12,6 +12,7 @@ Baúl de minijuegos para el móvil, en español, inglés y portugués. PWA hecha
 | **Brick Bash** | Rompe ladrillos con la bola. Dificultad Fácil/Normal/Difícil (vidas, velocidad, ancho de pala y frecuencia de power-ups), 8 niveles que se repiten más rápido, 6 power-ups (ensanchar, láser, imán, lento, multibola, vida), ladrillos duros y de metal, combos, estela y partículas. Récord por dificultad. |
 | **Ping Pong** | Tenis de mesa en vertical: 2 jugadores en el mismo móvil (cada uno controla su mitad, multitáctil) o contra la CPU (Fácil/Normal/Difícil). Partidos a 5, 7 u 11. Récord: el rally más largo. |
 | **Ahorcado** | Adivina la palabra letra a letra. Modo solo (palabras propias en ES/EN/PT por categoría: animales, comida, países, objetos) o contra un amigo (uno escribe la palabra en secreto). Fácil/Normal/Difícil (10/6/4 fallos), pista que cuesta un intento, dibujo animado. Récord: mejor racha en solo. |
+| **Simón dice** | Memoriza y repite la secuencia de cuatro luces con sus tonos clásicos (Web Audio). Modo Clásico o Al revés; Relajado (3 vidas) o Estricto (como el original). Se acelera según avanza, con celebración cada 5 rondas. Récord por modo. |
 
 ## Desarrollo
 

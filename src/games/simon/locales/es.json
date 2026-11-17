@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Simón dice",
+    "description": "Memoriza y repite la secuencia de luces y sonidos. Cada ronda, un paso más.",
+    "tags": [
+      "1 jugador",
+      "Memoria"
+    ]
+  },
+  "modes": {
+    "label": "Modo",
+    "classic": "Clásico",
+    "reverse": "Al revés",
+    "classicHint": "Repite la secuencia en el mismo orden.",
+    "reverseHint": "Repite la secuencia empezando por el final."
+  },
+  "difficulty": {
+    "label": "Dificultad",
+    "relaxed": "Relajado",
+    "strict": "Estricto",
+    "relaxedHint": "3 vidas: si fallas, se repite la secuencia.",
+    "strictHint": "Como el original: al primer fallo, se acaba."
+  },
+  "status": {
+    "watch": "Mira…",
+    "yourTurn": "¡Tu turno!",
+    "reverseTurn": "¡Al revés!",
+    "wrong": "¡Ups!",
+    "great": "¡Bien!",
+    "milestone": "¡{{n}} rondas!"
+  },
+  "hud": {
+    "round": "Ronda",
+    "best": "Récord",
+    "lives": "Vidas",
+    "soundOn": "Activar sonido",
+    "soundOff": "Silenciar sonido"
+  },
+  "pads": {
+    "green": "Verde",
+    "red": "Rojo",
+    "yellow": "Amarillo",
+    "blue": "Azul",
+    "label": "Botón {{color}}"
+  },
+  "screens": {
+    "play": "Jugar",
+    "over": "Fin de la partida",
+    "reached_one": "Has completado {{count}} ronda",
+    "reached_other": "Has completado {{count}} rondas",
+    "newRecord": "¡Nuevo récord!",
+    "record": "🏆 Récord: {{n}}",
+    "playAgain": "Otra vez",
+    "options": "Cambiar modo",
+    "keys": "En el teclado: Q W A S o 1 2 3 4"
+  },
+  "board": {
+    "label": "Simón dice: cuatro botones de colores"
+  }
+}
