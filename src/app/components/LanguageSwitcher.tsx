@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { LANGUAGES } from '../i18n/languages'
+import { LANGUAGES } from '@core/i18n/languages'
 import styles from './LanguageSwitcher.module.css'
 
 export function LanguageSwitcher() {

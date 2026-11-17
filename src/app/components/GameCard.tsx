@@ -1,11 +1,13 @@
 import type { CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
-import type { GameDefinition } from '../games/types'
+import { useBestScore } from '@core/scores'
+import type { Game } from '@games'
 import styles from '../pages/Home.module.css'
 
-export function GameCard({ id, accent, Icon }: GameDefinition) {
-  const { t } = useTranslation(id)
+export function GameCard({ id, accent, Icon }: Game) {
+  const { t } = useTranslation([id, 'common'])
+  const best = useBestScore(id)
   const tags = t('meta.tags', { returnObjects: true })
 
   return (
@@ -26,6 +28,11 @@ export function GameCard({ id, accent, Icon }: GameDefinition) {
               {tag}
             </span>
           ))}
+          {best !== null && (
+            <span className={`${styles.tag} ${styles.best}`}>
+              🏆 {t('home.best', { ns: 'common', score: best })}
+            </span>
+          )}
         </div>
       </div>
     </Link>

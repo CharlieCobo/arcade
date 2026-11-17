@@ -2,12 +2,23 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { fileURLToPath } from 'node:url'
+
+const src = (p: string) => fileURLToPath(new URL(`./src/${p}`, import.meta.url))
 
 // En GitHub Pages la app vive en /arcade/. En local, en la raíz.
 const base = process.env.BASE_PATH ?? '/'
 
 export default defineConfig({
   base,
+  resolve: {
+    alias: [
+      { find: /^@games$/, replacement: src('games/index.ts') },
+      { find: /^@games\//, replacement: src('games/') },
+      { find: /^@core\//, replacement: src('core/') },
+      { find: /^@app\//, replacement: src('app/') },
+    ],
+  },
   plugins: [
     react(),
     VitePWA({
