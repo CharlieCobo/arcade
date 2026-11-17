@@ -77,7 +77,7 @@ describe('CPU', () => {
   })
 
   it('prefiere el centro al empezar', () => {
-    expect(cpuMove(createGame(), 'hard')).toBe(3)
+    expect(cpuMove(createGame(), 'hard', () => 0.99)).toBe(3)
   })
 
   it('evita jugadas que dejan ganar al rival justo encima', () => {
@@ -88,8 +88,10 @@ describe('CPU', () => {
     put(5, 0, 2); put(5, 1, 2); put(5, 2, 1); put(5, 6, 2); put(4, 6, 2)
     put(4, 0, 1); put(4, 1, 1); put(4, 2, 1)
     const s: FourState = { ...createGame(2), board, moves: 9 }
-    expect(cpuMove(s, 'hard')).not.toBe(3)
-    expect(cpuMove(s, 'normal')).not.toBe(3)
+    // Azar fijado: en Normal la CPU hace a propósito alguna jugada aleatoria
+    const noRandom = () => 0.99
+    expect(cpuMove(s, 'hard', noRandom)).not.toBe(3)
+    expect(cpuMove(s, 'normal', noRandom)).not.toBe(3)
   })
 
   it('el nivel difícil responde rápido', () => {
