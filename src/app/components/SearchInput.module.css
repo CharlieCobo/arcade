@@ -1,0 +1,62 @@
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 0 8px 0 14px;
+  border: 2px solid transparent;
+  transition: border-color 0.15s;
+}
+.search:focus-within {
+  border-color: var(--cell-active);
+}
+.icon {
+  flex: none;
+  color: var(--muted);
+}
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 46px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 16px; /* 16px evita el zoom automático de iOS al enfocar */
+  outline: none;
+}
+.input::placeholder {
+  color: var(--muted);
+}
+/* Quitamos la X nativa del navegador: usamos la nuestra */
+.input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+.pending {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--cell-active);
+  border-top-color: var(--o);
+  animation: spin 0.8s linear infinite;
+}
+.clear {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--cell);
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
