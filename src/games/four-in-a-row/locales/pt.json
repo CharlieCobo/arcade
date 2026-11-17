@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": "Quatro em linha",
+    "description": "Solte suas fichas e conecte quatro antes do rival. Contra um amigo ou contra a CPU.",
+    "tags": [
+      "2 jogadores",
+      "vs CPU"
+    ]
+  },
+  "modes": {
+    "label": "Modo de jogo",
+    "pvp": "2 jogadores",
+    "cpu": "Contra a CPU",
+    "pvpHint": "Revezem no mesmo celular. Quem perdeu começa a próxima.",
+    "cpuHint": "Você joga com as rosas. A CPU pensa várias jogadas à frente."
+  },
+  "level": {
+    "label": "Dificuldade",
+    "easy": "Fácil",
+    "normal": "Normal",
+    "hard": "Difícil"
+  },
+  "players": {
+    "you": "Você",
+    "p1": "Jogador 1",
+    "p2": "Jogador 2",
+    "cpu": "CPU"
+  },
+  "status": {
+    "turn": "Vez de <player>{{name}}</player>",
+    "win": "<player>{{name}}</player> venceu! 🎉",
+    "youWin": "Você venceu! 🎉",
+    "youLose": "A CPU venceu",
+    "draw": "Empate! O tabuleiro está cheio",
+    "thinking": "A CPU está pensando…"
+  },
+  "board": {
+    "label": "Tabuleiro",
+    "column": "Coluna {{n}}",
+    "full": "cheia"
+  },
+  "streak": {
+    "current": "Sequência invicta",
+    "best": "Melhor: {{count}}",
+    "newBest": "Nova melhor sequência!",
+    "rules": "A sequência soma cada vitória seguida contra a CPU (empates não a quebram). Perder ou abandonar uma partida em andamento a zera."
+  },
+  "actions": {
+    "play": "Jogar",
+    "newGame": "Nova partida",
+    "menu": "Menu",
+    "record": "🏆 Melhor sequência: {{n}}",
+    "keys": "No teclado: 1 a 7"
+  }
+}
