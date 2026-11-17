@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": "Four in a Row",
+    "description": "Drop your discs and connect four before your rival. Against a friend or the CPU.",
+    "tags": [
+      "2 players",
+      "vs CPU"
+    ]
+  },
+  "modes": {
+    "label": "Game mode",
+    "pvp": "2 players",
+    "cpu": "vs CPU",
+    "pvpHint": "Take turns on the same phone. Whoever lost starts the next one.",
+    "cpuHint": "You play pink. The CPU thinks several moves ahead."
+  },
+  "level": {
+    "label": "Difficulty",
+    "easy": "Easy",
+    "normal": "Normal",
+    "hard": "Hard"
+  },
+  "players": {
+    "you": "You",
+    "p1": "Player 1",
+    "p2": "Player 2",
+    "cpu": "CPU"
+  },
+  "status": {
+    "turn": "<player>{{name}}</player>'s turn",
+    "win": "<player>{{name}}</player> wins! 🎉",
+    "youWin": "You win! 🎉",
+    "youLose": "The CPU wins",
+    "draw": "Draw! The board is full",
+    "thinking": "The CPU is thinking…"
+  },
+  "board": {
+    "label": "Four in a row board",
+    "column": "Column {{n}}",
+    "full": "full"
+  },
+  "streak": {
+    "current": "Unbeaten streak",
+    "best": "Best: {{count}}",
+    "newBest": "New best streak!",
+    "rules": "The streak grows with each consecutive win against the CPU (draws don't break it). Losing or quitting a game in progress resets it to 0."
+  },
+  "actions": {
+    "play": "Play",
+    "newGame": "New game",
+    "menu": "Menu",
+    "record": "🏆 Best streak: {{n}}",
+    "keys": "Keyboard: 1 to 7"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": "4 en raya",
+    "description": "Suelta tus fichas y conecta cuatro antes que tu rival. Contra un amigo o contra la CPU.",
+    "tags": [
+      "2 jugadores",
+      "vs CPU"
+    ]
+  },
+  "modes": {
+    "label": "Modo de juego",
+    "pvp": "2 jugadores",
+    "cpu": "Contra CPU",
+    "pvpHint": "Os turnáis en el mismo móvil. Empieza quien perdió la anterior.",
+    "cpuHint": "Tú juegas con las rosas. La CPU piensa varias jugadas por adelantado."
+  },
+  "level": {
+    "label": "Dificultad",
+    "easy": "Fácil",
+    "normal": "Normal",
+    "hard": "Difícil"
+  },
+  "players": {
+    "you": "Tú",
+    "p1": "Jugador 1",
+    "p2": "Jugador 2",
+    "cpu": "CPU"
+  },
+  "status": {
+    "turn": "Turno de <player>{{name}}</player>",
+    "win": "¡Gana <player>{{name}}</player>! 🎉",
+    "youWin": "¡Has ganado! 🎉",
+    "youLose": "Gana la CPU",
+    "draw": "¡Empate! El tablero está lleno",
+    "thinking": "La CPU está pensando…"
+  },
+  "board": {
+    "label": "Tablero de 4 en raya",
+    "column": "Columna {{n}}",
+    "full": "llena"
+  },
+  "streak": {
+    "current": "Racha invicto",
+    "best": "Mejor: {{count}}",
+    "newBest": "¡Nueva mejor racha!",
+    "rules": "La racha suma cada victoria seguida contra la CPU (los empates no la rompen). Perder o abandonar una partida empezada la devuelve a 0."
+  },
+  "actions": {
+    "play": "Jugar",
+    "newGame": "Nueva partida",
+    "menu": "Menú",
+    "record": "🏆 Mejor racha: {{n}}",
+    "keys": "En el teclado: 1 a 7"
+  }
+}
