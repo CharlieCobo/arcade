@@ -1,6 +1,6 @@
 {
   "home": {
-    "title": "Arcade",
+    "title": "Baulix",
     "subtitle": "Tu baúl de minijuegos",
     "comingSoon": "Más juegos próximamente",
     "best": "Récord: {{score}}",
@@ -27,7 +27,7 @@
   "theme": {
     "label": "Tema",
     "names": {
-      "arcade": "Arcade",
+      "arcade": "Baulix",
       "retro": "Retro",
       "light": "Claro",
       "kawaii": "Kawaii",

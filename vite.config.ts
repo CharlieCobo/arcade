@@ -25,8 +25,8 @@ export default defineConfig({
       registerType: 'prompt',
       pwaAssets: { config: true },
       manifest: {
-        name: 'Arcade',
-        short_name: 'Arcade',
+        name: 'Baulix',
+        short_name: 'Baulix',
         description: 'Baúl de minijuegos para jugar en el móvil, incluso sin conexión.',
         lang: 'es',
         theme_color: '#0f1020',

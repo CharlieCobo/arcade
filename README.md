@@ -1,4 +1,4 @@
-# Arcade
+# Baulix
 
 Baúl de minijuegos para el móvil, en español, inglés y portugués. PWA hecha con Vite + React + TypeScript: se instala en la pantalla de inicio y funciona sin conexión.
 
@@ -68,7 +68,7 @@ Los juegos usan `useGameScores(GAME_ID)`, cuyas acciones ya llevan el id del jue
 
 ## Temas
 
-Seis temas que se eligen con el botón de paleta del listado y se guardan en el navegador: **Arcade** (por defecto), **Retro** (paleta de cuatro colores de los PC de los 80, fuente de píxeles y líneas de CRT), **Claro**, **Kawaii** (pasteles y letra redondita), **Neón** (rosa y cian eléctricos con rejilla) y **Bosque**.
+Seis temas que se eligen con el botón de paleta del listado y se guardan en el navegador: **Baulix** (el de la casa, por defecto), **Retro** (paleta de cuatro colores de los PC de los 80, fuente de píxeles y líneas de CRT), **Claro**, **Kawaii** (pasteles y letra redondita), **Neón** (rosa y cian eléctricos con rejilla) y **Bosque**.
 
 Cada tema redefine las variables CSS de `global.css` sobre `<html data-theme>`. `--x` y `--o` son los colores de los jugadores en todos los juegos; lo que se pinta en canvas o SVG lee el tema activo con `readThemeColors()` de `@core/theme`.
 
