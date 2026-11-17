@@ -181,7 +181,7 @@
   pointer-events: none;
 }
 .guide {
-  stroke: rgb(255 255 255 / 0.07);
+  stroke: color-mix(in srgb, var(--text) 10%, transparent);
   stroke-width: 6;
   stroke-linecap: round;
   stroke-dasharray: 2 14;

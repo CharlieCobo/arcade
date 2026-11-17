@@ -23,5 +23,16 @@
   },
   "language": {
     "label": "Idioma"
+  },
+  "theme": {
+    "label": "Tema",
+    "names": {
+      "arcade": "Arcade",
+      "retro": "Retro",
+      "light": "Claro",
+      "kawaii": "Kawaii",
+      "cyberpunk": "Cyberpunk",
+      "forest": "Bosque"
+    }
   }
 }

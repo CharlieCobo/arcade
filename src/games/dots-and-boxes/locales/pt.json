@@ -36,6 +36,8 @@
   "status": {
     "turn": "Vez de <player>{{name}}</player>",
     "again": "De novo, <player>{{name}}</player>!",
+    "yourTurn": "<player>Sua vez</player>",
+    "youAgain": "<player>Sua vez de novo</player>!",
     "win": "<player>{{name}}</player> venceu! 🎉",
     "youWin": "Você venceu! 🎉",
     "youLose": "A CPU venceu",
