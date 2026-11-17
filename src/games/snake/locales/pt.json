@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "title": "Snake",
+    "description": "O clássico dos Nokia: coma, cresça e não morda o próprio rabo.",
+    "tags": ["1 jogador", "Clássico"]
+  },
+  "modes": {
+    "label": "Modo de jogo",
+    "classic": "Clássico",
+    "noWalls": "Sem paredes",
+    "classicHint": "As paredes matam. Escolha o nível: quanto mais alto, mais rápido e mais pontos.",
+    "noWallsHint": "Atravesse as bordas. A velocidade aumenta a cada 5 comidas."
+  },
+  "level": {
+    "label": "Nível"
+  },
+  "hud": {
+    "score": "Pontos",
+    "best": "Recorde",
+    "pause": "Pausar",
+    "resume": "Continuar"
+  },
+  "screens": {
+    "play": "Jogar",
+    "controls": "Use o D-pad, deslize no tabuleiro ou as setas do teclado.",
+    "paused": "Pausa",
+    "resume": "Continuar",
+    "restart": "Reiniciar",
+    "over": "Fim de jogo",
+    "won": "Você encheu o tabuleiro!",
+    "newRecord": "Novo recorde!",
+    "points_one": "{{count}} ponto",
+    "points_other": "{{count}} pontos",
+    "playAgain": "Jogar de novo",
+    "changeMode": "Mudar modo"
+  },
+  "dpad": {
+    "label": "Controles",
+    "up": "Cima",
+    "down": "Baixo",
+    "left": "Esquerda",
+    "right": "Direita"
+  },
+  "board": {
+    "label": "Tabuleiro do Snake"
+  }
+}

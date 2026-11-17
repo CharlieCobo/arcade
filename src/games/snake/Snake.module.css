@@ -1,0 +1,219 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  user-select: none;
+  -webkit-user-select: none;
+  /* Tamaño de cada botón del D-pad: más pequeño en pantallas bajas */
+  --dpad: clamp(46px, 7.6dvh, 60px);
+}
+
+/* Marcador */
+.hud {
+  display: flex;
+  gap: 10px;
+}
+.stat {
+  flex: 1;
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.statLabel {
+  color: var(--muted);
+  font-size: 12px;
+}
+.statValue {
+  font-size: 22px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tablero: cuadrado y tan grande como permita la pantalla sin hacer scroll */
+.board {
+  --chrome: calc(250px + 3 * var(--dpad) + env(safe-area-inset-top) + env(safe-area-inset-bottom));
+  position: relative;
+  width: min(100%, max(240px, calc(100dvh - var(--chrome))));
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  background: var(--cell);
+  padding: 6px;
+  touch-action: none;
+  overflow: hidden;
+}
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Pantallas sobre el tablero */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px;
+  text-align: center;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  animation: fade 0.18s ease-out;
+}
+.overlayTitle {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+}
+.finalScore {
+  font-size: 34px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.record {
+  font-weight: 700;
+  color: var(--x);
+  animation: pop 0.4s ease-out;
+}
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.4;
+  max-width: 260px;
+}
+
+.segmented {
+  display: flex;
+  width: 100%;
+  max-width: 280px;
+  background: var(--panel);
+  border-radius: var(--radius-md);
+  padding: 4px;
+}
+.segmented button {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 9px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+.segmented button[aria-pressed='true'] {
+  background: var(--cell);
+  color: var(--text);
+}
+
+.levels {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 4px;
+  width: 100%;
+  max-width: 280px;
+}
+.levels button {
+  border: 0;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 0;
+  cursor: pointer;
+}
+.levels button[aria-pressed='true'] {
+  background: var(--o);
+  color: var(--bg);
+}
+
+.primary,
+.ghost {
+  border: 0;
+  border-radius: var(--radius-md);
+  padding: 12px 28px;
+  min-width: 170px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+.primary {
+  background: var(--text);
+  color: var(--bg);
+}
+.ghost {
+  background: var(--panel);
+}
+
+/* D-pad tipo Nokia */
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, var(--dpad));
+  grid-template-rows: repeat(3, var(--dpad));
+  grid-template-areas:
+    '.    up     .'
+    'left center right'
+    '.    down   .';
+  gap: 6px;
+  margin: 0 auto;
+  touch-action: none;
+}
+.dpadBtn {
+  border: 0;
+  background: var(--panel);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  touch-action: none;
+  transition: background 0.08s, transform 0.08s;
+}
+.dpadBtn:active {
+  background: var(--cell-active);
+  transform: scale(0.94);
+}
+.up {
+  grid-area: up;
+  border-radius: 16px 16px 8px 8px;
+}
+.down {
+  grid-area: down;
+  border-radius: 8px 8px 16px 16px;
+}
+.left {
+  grid-area: left;
+  border-radius: 16px 8px 8px 16px;
+}
+.right {
+  grid-area: right;
+  border-radius: 8px 16px 16px 8px;
+}
+.center {
+  grid-area: center;
+  border-radius: 50%;
+  background: var(--cell);
+  color: var(--muted);
+  margin: 8px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}

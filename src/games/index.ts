@@ -1,4 +1,5 @@
 import infiniteTicTacToe from './infinite-tic-tac-toe'
+import snake from './snake'
 
 /**
  * Baúl de juegos. Para añadir uno nuevo:
@@ -7,7 +8,7 @@ import infiniteTicTacToe from './infinite-tic-tac-toe'
  *
  * Regla: un juego solo puede importar de @core, nunca de otro juego ni de @app.
  */
-export const games = [infiniteTicTacToe] as const
+export const games = [infiniteTicTacToe, snake] as const
 
 export type Game = (typeof games)[number]
 export type GameId = Game['id']

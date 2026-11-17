@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "title": "Snake",
+    "description": "The Nokia classic: eat, grow and don't bite your own tail.",
+    "tags": ["1 player", "Classic"]
+  },
+  "modes": {
+    "label": "Game mode",
+    "classic": "Classic",
+    "noWalls": "No walls",
+    "classicHint": "Walls are deadly. Pick a level: the higher it is, the faster you go and the more you score.",
+    "noWallsHint": "Go through the edges. Speed goes up every 5 bites."
+  },
+  "level": {
+    "label": "Level"
+  },
+  "hud": {
+    "score": "Score",
+    "best": "Best",
+    "pause": "Pause",
+    "resume": "Resume"
+  },
+  "screens": {
+    "play": "Play",
+    "controls": "Use the D-pad, swipe on the board or the arrow keys.",
+    "paused": "Paused",
+    "resume": "Resume",
+    "restart": "Restart",
+    "over": "Game over",
+    "won": "You filled the board!",
+    "newRecord": "New record!",
+    "points_one": "{{count}} point",
+    "points_other": "{{count}} points",
+    "playAgain": "Play again",
+    "changeMode": "Change mode"
+  },
+  "dpad": {
+    "label": "Controls",
+    "up": "Up",
+    "down": "Down",
+    "left": "Left",
+    "right": "Right"
+  },
+  "board": {
+    "label": "Snake board"
+  }
+}
