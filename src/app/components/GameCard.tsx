@@ -1,12 +1,13 @@
 import type { CSSProperties } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
+import { formatCompact } from '@core/lib/formatCompact'
 import { useBestScore } from '@core/scores'
 import type { Game } from '@games'
 import styles from '../pages/Home.module.css'
 
 export function GameCard({ id, accent, Icon }: Game) {
-  const { t } = useTranslation([id, 'common'])
+  const { t, i18n } = useTranslation([id, 'common'])
   const best = useBestScore(id)
   const tags = t('meta.tags', { returnObjects: true })
 
@@ -29,8 +30,13 @@ export function GameCard({ id, accent, Icon }: Game) {
             </span>
           ))}
           {best !== null && (
-            <span className={`${styles.tag} ${styles.best}`}>
-              🏆 {t('home.best', { ns: 'common', score: best })}
+            <span
+              className={`${styles.tag} ${styles.best}`}
+              // El número completo para lectores de pantalla y al mantener pulsado
+              title={best.toLocaleString(i18n.resolvedLanguage)}
+              aria-label={t('home.best', { ns: 'common', score: best.toLocaleString(i18n.resolvedLanguage) })}
+            >
+              🏆 {t('home.best', { ns: 'common', score: formatCompact(best) })}
             </span>
           )}
         </div>
